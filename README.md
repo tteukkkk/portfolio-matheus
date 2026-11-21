@@ -36,3 +36,11 @@ Matheus Macêdo Felicio · [GitHub](https://github.com/tteukkkk) · [LinkedIn](h
 - Contato simplificado: escolha do provedor (Gmail, Outlook, Yahoo Mail ou aplicativo local) somente após clicar no botão de e-mail.
 - Acessibilidade: HTML semântico, navegação por teclado, diálogos nativos e `prefers-reduced-motion`.
 - Site estático compatível com GitHub Pages. As imagens são capturas com dados fictícios: os sistemas backend não estão implantados neste domínio.
+
+
+## Identidades 2026
+- AgendaFlow: preto e branco com detalhes cartoon originais;
+- DevFlow: linguagem corporativa, azul e navegação de workspace;
+- FinTrack: amarelo, branco e preto, focado em leitura financeira.
+
+As páginas de case apresentam capturas reais de demonstração local em 16:9.

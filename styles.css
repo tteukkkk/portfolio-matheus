@@ -476,3 +476,48 @@ html[data-theme=dark] .github-card .skill-icon-logo{background:#ffffff;border-co
 @media (prefers-reduced-motion: reduce) {
   .contact-provider,.skills-section .skill-item { transition: none !important; }
 }
+/* PORTFOLIO V10 — three independent brands, no heavy card transformations. */
+.featured-grid{gap:23px}
+.featured-card{transition:border-color .18s,box-shadow .18s!important;transform:none!important;filter:none!important}
+.featured-card:hover,.featured-card:focus-visible{transform:none!important;filter:none!important}
+.featured-card::before,.featured-card::after{mix-blend-mode:normal!important}
+.featured-card .showcase-visual{overflow:hidden;transform:none!important;transition:none!important}
+.featured-card:hover .showcase-visual{transform:none!important}
+.featured-card .showcase-screen{object-fit:contain;object-position:center center;transform:none!important;transition:none!important}
+.featured-card:hover .showcase-screen{transform:none!important}
+.featured-card .showcase-thumb-stack{display:none!important}
+.featured-card .showcase-visual-overlay{display:none!important}
+.featured-card .showcase-copy{isolation:isolate}
+.featured-card:hover .showcase-link-arrow{transform:none!important}
+.featured-card:hover .showcase-cta{transform:none!important;letter-spacing:normal!important}
+.featured-agendaflow{--feature-muted:#111;background:#f9f9f7;color:#111;border:2px solid #141414;box-shadow:6px 7px 0 #111!important}
+.featured-agendaflow .showcase-visual{background:#fff;margin:25px 25px 0;min-height:300px;border:2px solid #111;border-radius:14px 14px 8px 8px;box-shadow:none!important}
+.featured-agendaflow .showcase-visual-top{background:#111;color:#fff;border-bottom:0;font-weight:800}
+.featured-agendaflow .showcase-screen{object-fit:contain;background:#fff}
+.featured-agendaflow .showcase-copy{background:radial-gradient(#1010100b 1px,transparent 1px);background-size:16px 16px;padding:29px 33px 36px}
+.featured-agendaflow .showcase-brand,.featured-agendaflow .showcase-index,.featured-agendaflow .showcase-cta{color:#111}
+.featured-agendaflow .showcase-title{font-family:'Arial Black','Trebuchet MS',sans-serif;font-size:clamp(28px,3vw,40px);font-style:normal;letter-spacing:-.06em}
+.featured-agendaflow .showcase-link-arrow{color:#111;border-color:#111;border-radius:8px}
+.featured-agendaflow .tag{color:#111;border-color:#333;border-radius:7px}
+.featured-agendaflow::after{content:'';pointer-events:none;display:block!important;position:absolute;right:20px;bottom:130px;width:74px;height:90px;background:url('./assets/clock-mascot.svg') center/contain no-repeat;opacity:.16;z-index:1}
+.featured-agendaflow:hover{box-shadow:7px 8px 0 #111!important}
+.featured-devflow{background:#142b49;color:#e7f0fc;border:1px solid #284b76;box-shadow:0 13px 28px #0a193128!important}
+.featured-devflow .showcase-visual{border:1px solid #375b87;border-radius:10px;margin:25px 20px 0;min-height:315px;background:#eef4fb;box-shadow:none;transform:none!important}
+.featured-devflow .showcase-visual-top{background:#203f65;color:#e7f1fd;border-bottom:1px solid #294e7e;font-weight:700}
+.featured-devflow .showcase-screen{object-fit:contain;background:#edf2f9}
+.featured-devflow .showcase-copy{padding:28px 30px 35px}.featured-devflow .showcase-brand,.featured-devflow .showcase-index,.featured-devflow .showcase-cta{color:#b4d1ff}
+.featured-devflow .showcase-title{font-family:Manrope,'Segoe UI',sans-serif;color:#fff;font-weight:800}.featured-devflow .showcase-link-arrow{color:#e6f1ff;border-color:#7391b5;border-radius:8px}
+.featured-devflow .tag{color:#c7ddff;border-color:#6480a5;border-radius:7px}.featured-devflow:hover{box-shadow:0 14px 30px #0a193138!important}
+.featured-fintrack{background:#ffe453;color:#151515;border:2px solid #141414;min-height:400px;box-shadow:6px 7px 0 #111!important}
+.featured-fintrack .showcase-copy{background:transparent;padding:42px 42px 42px 48px;min-height:0}
+.featured-fintrack .showcase-index,.featured-fintrack .showcase-brand,.featured-fintrack .showcase-cta{color:#111}
+.featured-fintrack .showcase-title{font-family:'Arial Black',Manrope,sans-serif;font-size:clamp(35px,4.7vw,59px);color:#111;letter-spacing:-.07em}
+.featured-fintrack .showcase-description{color:#302c1e;opacity:1;max-width:430px}
+.featured-fintrack .showcase-link-arrow{color:#111;border-color:#111;border-radius:50%}
+.featured-fintrack .tag{color:#111;border-color:#252525;border-radius:5px}
+.featured-fintrack .showcase-visual{background:#fff;margin:28px 23px 28px 0;border:2px solid #111;border-radius:10px;min-height:310px;box-shadow:5px 7px 0 rgba(0,0,0,.25);transform:none!important}
+.featured-fintrack .showcase-visual-top{background:#111;color:#fff;border-bottom:none}
+.featured-fintrack .showcase-screen{background:#fff;object-fit:contain;object-position:center center}
+.featured-fintrack:hover{box-shadow:7px 8px 0 #111!important}
+@media(max-width:760px){.featured-fintrack{display:flex;flex-direction:column}.featured-fintrack .showcase-visual{order:1;min-height:245px;margin:17px 17px 0;flex:none}.featured-fintrack .showcase-copy{order:2;min-height:0;padding:28px}.featured-agendaflow .showcase-visual,.featured-devflow .showcase-visual{margin:17px 17px 0;min-height:250px}.featured-agendaflow .showcase-copy{padding:25px}.featured-devflow .showcase-copy{padding:25px}}
+@media(max-width:470px){.featured-fintrack .showcase-visual,.featured-agendaflow .showcase-visual,.featured-devflow .showcase-visual{min-height:214px}.featured-fintrack .showcase-title{font-size:39px}.featured-agendaflow::after{display:none!important}}

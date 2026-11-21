@@ -41,3 +41,63 @@ html[data-theme=light] .case-fintrack{--accent:#0b8b8a;--accent-halo:#44b8c43b;-
 .fin-nav-brand{font-family:Manrope,sans-serif;font-weight:800}.fin-nav-brand span{color:var(--accent);font-style:normal}.fin-nav-brand small{font-size:11px;letter-spacing:.08em;font-weight:700;opacity:.7;margin-left:4px}.fin-hero{min-height:620px;gap:44px}.fin-hero h1{font:800 clamp(58px,6vw,96px)/.96 Manrope,sans-serif;letter-spacing:-.07em}.fin-hero h1 em{color:var(--accent)}.fin-copy p{max-width:500px}.fin-art::before{background:radial-gradient(circle,rgba(113,221,209,.18),transparent 62%)}.fin-display{background:#111b2d;border:1px solid #34506f;padding:14px;border-radius:20px;box-shadow:24px 32px 72px rgba(2,10,24,.48)}.fin-display img{aspect-ratio:16/9;border-radius:12px}.fin-shield{background:#f2fffd;color:#0b2639;box-shadow:0 16px 44px rgba(2,10,24,.28);transform:rotate(3deg)}html[data-theme=dark] .fin-shield{background:#f1fffd;color:#0f2537}.fin-divider{color:var(--accent)}.fin-feature{border-top:1px solid var(--hairline);padding:24px 10px 18px 0}.fin-feature span{font:800 15px/1 Manrope,sans-serif;letter-spacing:.12em}.fin-feature h3{font:800 24px/1.2 Manrope,sans-serif;margin:16px 0 10px}.fin-closure{background:linear-gradient(180deg,rgba(113,221,209,.07),transparent),var(--tint);border-radius:20px}.fin-closure h2{font:800 clamp(34px,4vw,48px)/1.1 Manrope,sans-serif;letter-spacing:-.045em}.fin-closure p{font-size:14px}.case-agenda .agenda-section-head p,.case-fintrack .agenda-section-head p,.case-devflow .dev-section-title h2+*{opacity:.76}
 @media(max-width:900px){.case-gallery-grid{grid-template-columns:1fr 1fr}.shot-large,.shot-wide,.shot-portrait,.shot-half{grid-column:auto}.fin-hero{grid-template-columns:1fr;min-height:0;padding-top:64px}.fin-art{max-width:740px;margin-inline:auto;width:100%}}
 @media(max-width:640px){.case-gallery-grid{grid-template-columns:1fr}.case-shot-card{padding:10px}.fin-shield{right:8px;bottom:-8px;padding:12px 14px}.fin-shield strong{font-size:17px}.fin-shield span{font-size:9px}.case-image-modal img{width:92vw;max-height:74vh}}
+/* Case pages V10 – three different visual systems and uncropped screenshots. */
+.case-image-button{display:block;width:100%;height:auto;background:transparent;overflow:hidden}
+.case-image-button img,.case-shot-card .case-image-button img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain!important;object-position:center!important;max-width:100%;background:transparent;transform:none!important;transition:none!important}
+.case-shot-card{padding:13px;border-radius:12px;border:1px solid var(--hairline);box-shadow:none;overflow:hidden;transition:border-color .18s,background .18s}
+.case-shot-card:hover{transform:none;box-shadow:none;border-color:var(--accent)}
+.case-shot-card figcaption{font-weight:700;opacity:.85;padding:12px 8px 3px}
+.case-zoom{background:#0b0b0bd9;color:#fff;border:1px solid #ffffff50;border-radius:7px}
+.case-image-button:hover img{transform:none!important}
+.case-image-modal{background:#111;border-radius:14px;border:2px solid #fff2}
+.case-image-modal img{object-fit:contain!important;aspect-ratio:16/9;background:#fff;width:min(90vw,1180px);max-height:80vh}
+/* AgendaFlow / monochrome cartoon-inspired layout */
+.case-agenda{--accent:#111;--accent-halo:#11111120;--hairline:#171717;--tint:#eeeeeb;--button-text:#fff;--surface:#f2f2ed;--paper:#fff;font-family:'Trebuchet MS',Arial,sans-serif;background:#fafaf8;color:#141414;background-image:radial-gradient(#0000000a .8px,transparent .8px);background-size:19px 19px}
+html[data-theme=dark] .case-agenda{--accent:#fff;--accent-halo:#ffffff20;--hairline:#dedede;--tint:#252525;--button-text:#111;--surface:#1d1d1d;--paper:#171717;background:#121212;color:#fff}
+.case-agenda h1,.case-agenda h2,.case-agenda h3,.case-agenda .case-nav-brand{font-family:'Arial Black','Trebuchet MS',sans-serif!important;font-weight:900!important;letter-spacing:-.07em}
+.case-agenda .agenda-nav{border-bottom:3px solid var(--hairline)}
+.case-agenda .agenda-hero{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:48px;padding:72px 0 85px;min-height:600px}
+.case-agenda .agenda-hero h1{font-size:clamp(54px,6.2vw,98px);line-height:1.02}
+.case-agenda .agenda-hero h1 em{color:var(--accent);text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:7px}
+.case-agenda .agenda-screen-wrap{background:var(--paper);border:3px solid var(--hairline);padding:12px;border-radius:15px;box-shadow:8px 10px 0 var(--hairline);transform:rotate(1.5deg)}
+.case-agenda .agenda-screen-wrap .case-image-button{border-radius:7px}
+.case-agenda .agenda-screen-wrap img{aspect-ratio:16/9}
+.case-agenda .agenda-picture:hover .agenda-screen-wrap{transform:rotate(1.5deg)}
+.case-agenda .agenda-ornament{border:2px dashed var(--hairline);background:transparent;border-radius:50%;opacity:.35}
+.case-agenda .agenda-chip{background:var(--paper);border:2px solid var(--hairline);color:inherit;border-radius:10px;box-shadow:4px 5px 0 var(--hairline);left:-20px;bottom:-18px;animation:none;transform:rotate(-2deg)}
+.case-agenda .agenda-chip span{color:var(--accent)}.agenda-hero-mascot{position:absolute;right:-22px;bottom:-55px;width:115px;height:auto;z-index:5;filter:drop-shadow(3px 4px 0 #0002)}
+html[data-theme=dark] .agenda-hero-mascot{filter:invert(1)}
+.case-agenda .agenda-benefit{background:var(--paper);border:2px solid var(--hairline);border-radius:12px;box-shadow:4px 5px 0 #0002}.case-agenda .agenda-benefit:hover{transform:none}
+.case-agenda .agenda-closure{border:2px solid var(--hairline);background:var(--paper);border-radius:15px;box-shadow:6px 7px 0 var(--hairline)}
+.case-agenda .agenda-shot{background:var(--paper)}
+/* DevFlow / serious business software */
+.case-devflow{--accent:#2d63a6;--accent-halo:#23518b25;--hairline:#d8e3f0;--tint:#eef4fb;--button-text:#fff;background:#f3f6fb;color:#1e3048;font-family:Inter,'Segoe UI',Arial,sans-serif}
+html[data-theme=dark] .case-devflow{--accent:#a5ccff;--accent-halo:#5a9de73a;--hairline:#3b5572;--tint:#243a55;--button-text:#132c48;background:#121f30;color:#f2f8ff}
+.case-devflow .dev-nav{border-bottom:1px solid var(--hairline)}
+.case-devflow .dev-hero{background:#153454;color:#f3f8ff;border-radius:11px;padding:64px 54px 56px;margin:22px 0 24px;border:1px solid #45678b}
+.case-devflow .dev-hero h1{font-family:Inter,'Segoe UI',Arial,sans-serif;font-size:clamp(66px,12vw,174px);color:#fff;letter-spacing:-.09em}
+.case-devflow .dev-hero h1 span{color:#a9d1ff}
+.case-devflow .dev-hero .case-eyebrow{color:#bddcff}.case-devflow .dev-hero-lead{color:#d8e8fc;opacity:1}
+.case-devflow .dev-hero .case-button.primary{background:#e0edfd;color:#153454}.case-devflow .dev-hero .case-button.secondary{border-color:#91b3d5;color:#fff}
+.case-devflow .dev-hero-code{background:#22486f;color:#d9eafe;border:1px solid #517397}
+.case-devflow .dev-browser{background:#e8f1fc;border:1px solid #c4d6ed;box-shadow:none;border-radius:10px}
+.case-devflow .dev-browser-top{background:#1f3c5d;color:#fff;border-bottom:0}
+.case-devflow .dev-browser img{aspect-ratio:16/9!important}
+.case-devflow .dev-feature{background:transparent;border-radius:8px;box-shadow:none;transition:border-color .2s}.case-devflow .dev-feature:hover{transform:none;border-color:var(--accent)}
+.case-devflow .dev-feature h3{font-family:Inter,'Segoe UI',Arial,sans-serif;font-weight:800}
+/* FinTrack / yellow / white / black */
+.case-fintrack{--accent:#151515;--accent-halo:#ffe45044;--hairline:#242424;--tint:#fff7d1;--button-text:#fff;background:#f8f8f5;color:#111;font-family:Manrope,Arial,sans-serif}
+html[data-theme=dark] .case-fintrack{--accent:#ffe356;--accent-halo:#ffe45022;--hairline:#f8f8f5;--tint:#2c281b;--button-text:#111;background:#151515;color:#fff}
+.case-fintrack h1,.case-fintrack h2,.case-fintrack h3,.case-fintrack .fin-nav-brand{font-family:Manrope,'Arial Black',sans-serif!important;font-weight:900!important;letter-spacing:-.07em}
+.case-fintrack .fin-nav{border-bottom:2px solid var(--hairline)}.case-fintrack .fin-nav-brand span{color:var(--accent)}
+.case-fintrack .fin-hero{background:#ffe453;color:#111;border:2px solid #111;border-radius:15px;min-height:620px;padding:66px 52px;gap:35px;margin-top:20px}
+.case-fintrack .fin-hero h1{font-size:clamp(51px,6vw,94px);color:#111;line-height:1.01}.case-fintrack .fin-hero h1 em{color:#111;text-decoration:underline;text-decoration-thickness:5px;text-underline-offset:7px}
+.case-fintrack .fin-hero p{color:#25231c;opacity:1}.case-fintrack .fin-hero .case-eyebrow{color:#111}
+.case-fintrack .fin-hero .case-button.primary{background:#111;color:#ffe453}.case-fintrack .fin-hero .case-button.secondary{border-color:#111;color:#111}
+.case-fintrack .fin-art::before{display:none}.case-fintrack .fin-display{background:#fff;border:3px solid #111;box-shadow:8px 9px 0 #111;border-radius:10px;padding:8px;transform:none}.case-fintrack .fin-display:hover{transform:none}.case-fintrack .fin-display img{aspect-ratio:16/9}
+.case-fintrack .fin-shield{background:#fff;border:2px solid #111;border-radius:8px;box-shadow:3px 4px 0 #111;color:#111;transform:rotate(2deg)}.case-fintrack .fin-divider{color:var(--accent);border-block:2px solid var(--hairline)}
+.case-fintrack .fin-feature{border-top:3px solid var(--hairline)}.case-fintrack .fin-feature span{color:var(--accent)}.case-fintrack .fin-feature h3{font-weight:900}
+.case-fintrack .fin-closure{background:#111;color:#fff;border-radius:14px;border:2px solid #111}.case-fintrack .fin-closure h2{color:#ffe453}.case-fintrack .fin-closure .case-button.primary{background:#ffe453;color:#111}
+.case-fintrack .case-shot-card{background:#fff;border:1px solid #111;color:#111}
+@media(max-width:830px){.case-agenda .agenda-hero,.case-fintrack .fin-hero{grid-template-columns:1fr;padding:50px 23px;gap:20px;min-height:0}.case-devflow .dev-hero{padding:48px 22px}.agenda-hero-mascot{width:85px;right:-5px;bottom:-28px}.case-fintrack .fin-display{box-shadow:5px 6px 0 #111}}
+@media(max-width:520px){.case-fintrack .fin-hero h1,.case-agenda .agenda-hero h1{font-size:clamp(46px,12vw,69px)}.case-fintrack .fin-shield{right:5px}.case-agenda .agenda-chip{position:relative;left:auto;bottom:auto;margin-top:12px}.agenda-hero-mascot{display:none}}

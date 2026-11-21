@@ -93,7 +93,7 @@ const projectPreviews = {
   'agendaflow-saas':{
     primary:{src:'./assets/agendaflow-saas-preview.webp',alt:'Captura da interface AgendaFlow SaaS em ambiente de demonstração local.'},
     secondary:[
-      {src:'./assets/agendaflow-saas-screen-3-crop.webp',alt:'Reserva online do AgendaFlow.'}
+      {src:'./assets/agendaflow-saas-screen-3.webp',alt:'Reserva online do AgendaFlow.'}
     ]
   },
   'devflow':{
@@ -103,7 +103,7 @@ const projectPreviews = {
     ]
   },
   'fintrack':{
-    primary:{src:'./assets/fintrack-preview-wide.webp',alt:'Captura da interface FinTrack em ambiente de demonstração local.'},
+    primary:{src:'./assets/fintrack-preview.webp',alt:'Captura da interface FinTrack em ambiente de demonstração local.'},
     secondary:[
       {src:'./assets/fintrack-screen-4.webp',alt:'Painel complementar do FinTrack.'},
       {src:'./assets/fintrack-screen-2.webp',alt:'Relatórios do FinTrack.'}
@@ -146,7 +146,7 @@ function makeFeaturedCard(repo,index){
   visual.append(overlay);
   const body=el('div','showcase-copy');
   body.append(el('span','showcase-index',`PROJETO 0${index+1} / ${['SERVIÇOS','PRODUTIVIDADE','FINANÇAS'][index]}`));
-  const brand=el('span','showcase-brand',index===0?'Agendamento inteligente':index===1?'Gerencie. Construa. Entregue.':'Finanças com clareza');
+  const brand=el('span','showcase-brand',index===0?'Agendamento com personalidade':index===1?'Gerencie. Construa. Entregue.':'Seu dinheiro no centro');
   body.append(brand);
   const nameRow=el('div','showcase-heading');
   nameRow.append(el('h3','showcase-title',repo.title),el('span','showcase-link-arrow','↗'));

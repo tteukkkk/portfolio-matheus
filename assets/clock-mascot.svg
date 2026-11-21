@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 240" role="img" aria-labelledby="t d">
+<title id="t">Reloginho, mascote original do AgendaFlow</title><desc id="d">Relógio sorridente em desenho animado preto e branco, com braços e sapatos</desc>
+<g fill="none" stroke="#0c0c0c" stroke-linecap="round" stroke-linejoin="round">
+<path d="M72 183q-10 23-20 30m82-30q13 22 27 26" stroke-width="9"/>
+<path d="M65 116q-28-15-42-8m123 8q24-18 42-11" stroke-width="8"/>
+<path d="M27 113q-12-4-17-19m13 17q-15-1-18-9m166 3q13-16 23-9m-17 11q18-3 23-11" stroke-width="5"/>
+</g>
+<path d="M35 224q-9-21 24-30 19-3 27 13 6 20-18 27-21 6-33-10zm92 3q-5-25 19-32 30-6 39 16 10 23-19 27-29 5-39-11z" fill="#0d0d0d" stroke="#0d0d0d" stroke-width="4"/>
+<path d="M41 220q13-11 34-8m63 9q17-10 36-6" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<path d="M33 93q-12-66 55-78 70-12 92 51 17 60-34 99-43 31-85-1-22-16-28-71z" fill="#fff" stroke="#0d0d0d" stroke-width="9"/>
+<path d="M43 94q-11-58 48-69 62-9 78 43 13 49-26 85-34 29-77-4" fill="none" stroke="#0d0d0d" stroke-width="3" opacity=".3"/>
+<ellipse cx="79" cy="81" rx="8" ry="17" fill="#0d0d0d"/><ellipse cx="132" cy="78" rx="8" ry="17" fill="#0d0d0d"/>
+<ellipse cx="76" cy="76" rx="2.5" ry="5" fill="#fff"/><ellipse cx="129" cy="73" rx="2.5" ry="5" fill="#fff"/>
+<path d="M70 115q30 42 71-5-5 40-34 43-27 0-37-38z" fill="#0d0d0d"/>
+<path d="M88 134q17-9 32 6" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+<path d="M90 28l-10-15m38 15l5-16" stroke="#0d0d0d" stroke-width="5" stroke-linecap="round"/>
+<path d="M104 30v27m0-27l15 13" stroke="#0d0d0d" stroke-width="5" stroke-linecap="round"/>
+<path d="M5 83l13-9M185 57l19-9M189 152l12 16" stroke="#0d0d0d" stroke-width="4" stroke-linecap="round"/>
+</svg>
