@@ -1011,3 +1011,51 @@ html{scroll-padding-top:84px}
   .site-header .nav-actions .theme-toggle,
   .site-header .nav-actions .mobile-toggle{width:39px;height:39px}
 }
+
+/* DEVFLOW HOME LIGHT MODE V24 — somente a vitrine na home */
+/* O modo claro deve afetar o card e a captura de tela, não só o fundo da página. */
+html:not([data-theme="dark"]) .projects-section .featured-devflow{
+  --feature-muted:#3c628e;
+  background:#fff;
+  color:#1d3049;
+  border:1px solid #cfdaea;
+  box-shadow:0 12px 28px rgba(35,67,108,.08)!important;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-visual{
+  background:#fff;
+  border:1px solid #d6e0ec;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-screen{
+  background:#fff;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-visual-top{
+  background:#f0f5fb;
+  color:#35577e;
+  border-bottom:1px solid #d7e1ed;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-copy{
+  background:#fff;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-title{
+  color:#172e4b;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-brand,
+html:not([data-theme="dark"]) .featured-devflow .showcase-index,
+html:not([data-theme="dark"]) .featured-devflow .showcase-cta{
+  color:#215c9c;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-description{
+  color:#445875;
+  opacity:1;
+}
+html:not([data-theme="dark"]) .featured-devflow .showcase-link-arrow{
+  color:#215c9c;
+  border-color:#9cb5d2;
+}
+html:not([data-theme="dark"]) .featured-devflow .tag{
+  color:#285d94;
+  border-color:#bed1e7;
+}
+html:not([data-theme="dark"]) .projects-section .featured-devflow:hover{
+  box-shadow:0 14px 30px rgba(35,67,108,.12)!important;
+}
