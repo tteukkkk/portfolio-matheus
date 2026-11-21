@@ -116,3 +116,35 @@ html[data-theme=dark] .case-fintrack{--accent:#ffe356;--accent-halo:#ffe45022;--
   .case-agenda .agenda-mosaic .shot-wide,
   .case-agenda .agenda-mosaic .shot-half{grid-column:span 12}
 }
+
+/* FinTrack v19: imagens reais do app sincronizadas ao tema, sem letterboxing. */
+.case-fintrack .fin-mosaic .shot-wide{grid-column:span 12}
+.case-fintrack .fin-mosaic .shot-half{grid-column:span 6}
+.case-fintrack .fin-display img,.case-fintrack .fin-mosaic img{
+  display:block;
+  width:100%;
+  height:auto;
+  aspect-ratio:16 / 9;
+  object-fit:cover;
+  object-position:center top;
+  background:transparent;
+}
+html[data-theme=dark] .case-fintrack .fin-hero{
+  background:#171717;
+  border-color:#ead049;
+  color:#f8f8f8;
+}
+html[data-theme=dark] .case-fintrack .fin-hero h1,
+html[data-theme=dark] .case-fintrack .fin-hero h1 em{
+  color:#f5f5f5;
+}
+html[data-theme=dark] .case-fintrack .fin-hero p,
+html[data-theme=dark] .case-fintrack .fin-hero .case-eyebrow{
+  color:#f8f5df;
+}
+html[data-theme=dark] .case-fintrack .fin-hero .case-button.primary{background:#ffe453;color:#111}
+html[data-theme=dark] .case-fintrack .fin-hero .case-button.secondary{border-color:#ffe453;color:#ffe453}
+@media(max-width:760px){
+  .case-fintrack .fin-mosaic .shot-wide,
+  .case-fintrack .fin-mosaic .shot-half{grid-column:span 12}
+}

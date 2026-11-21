@@ -568,3 +568,13 @@ html[data-theme=dark] .github-card .skill-icon-logo{background:#ffffff;border-co
   height:auto;aspect-ratio:16 / 9;object-fit:cover;object-position:top center;
   background:transparent;border:0;margin:0;border-radius:0 0 9px 9px;
 }
+
+/* FinTrack v19: painel real 16:9 sem faixas de letterboxing no card. */
+.featured-fintrack .showcase-visual{background:#fbfaf6;overflow:hidden}
+.featured-fintrack .showcase-screen{
+  object-fit:cover;
+  object-position:center top;
+  background:#fbfaf6;
+}
+html[data-theme=dark] .featured-fintrack .showcase-visual,
+html[data-theme=dark] .featured-fintrack .showcase-screen{background:#181818}
