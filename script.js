@@ -21,7 +21,12 @@ const fallbackProjects = [
 ].map(p=>({...p, html_url:`https://github.com/${GITHUB_USER}/${p.name}`}));
 
 const fallbackByName = new Map(fallbackProjects.map(project=>[project.name.toLowerCase(),project]));
-const selectedFeatured = ['tradeagile','androshop','senai-agile-pwa'];
+const selectedFeatured = ['agendaflow-saas','devflow','fintrack'];
+const featuredCatalog = {
+  'agendaflow-saas':{name:'agendaflow-saas',title:'AgendaFlow SaaS',description:"Plataforma de agendamentos multiempresa com página pública de reservas, equipes, calendários, planos e fluxo de cobrança configurável.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/agendaflow-saas.html',detail_url:'./projetos/agendaflow-saas.html',published:false},
+  'devflow':{name:'devflow',title:'DevFlow',description:"Plataforma colaborativa de gestão de projetos com Kanban interativo, tarefas, convites, permissões e atualizações em tempo real.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html',detail_url:'./projetos/devflow.html',published:false},
+  'fintrack':{name:'fintrack',title:'FinTrack',description:"Gestão financeira pessoal com lançamentos, metas, orçamentos, recorrências, relatórios e importação inteligente de CSV.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/fintrack.html',detail_url:'./projetos/fintrack.html',published:false}
+};
 let projectList = fallbackProjects.slice();
 let activeFilter = 'all';
 let searchTerm = '';
@@ -85,17 +90,15 @@ function makeRepoCard(repo){
 }
 
 const projectPreviews = {
-  'tradeagile':{src:'./assets/tradeagile-preview.webp',alt:'Prévia ilustrativa do painel de estoque TradeAgile, com barra lateral, filtros e tabela de produtos.'},
-  'androshop':{src:'./assets/androshop-preview.webp',alt:'Prévia ilustrativa da página inicial do AndroShop, com banner, navegação e seções de vantagens.'},
-  'senai-agile-pwa':{src:'./assets/senai-agile-pwa-preview.webp',alt:'Prévia ilustrativa do portal SENAI Agile, com notícias e menu de navegação.'}
+  'agendaflow-saas':{src:'./assets/agendaflow-saas-preview.webp',alt:'Captura da interface AgendaFlow SaaS em ambiente de demonstração local.'},
+  'devflow':{src:'./assets/devflow-preview.webp',alt:'Captura da interface DevFlow em ambiente de demonstração local.'},
+  'fintrack':{src:'./assets/fintrack-preview.webp',alt:'Captura da interface FinTrack em ambiente de demonstração local.'}
 };
 
 function makeFeaturedCard(repo,index){
-  const card = el('a','featured-card reveal');
+  const card = el('a','featured-card reveal interactive-tilt');
   card.href = repo.html_url;
-  card.target = '_blank';
-  card.rel = 'noopener noreferrer';
-  card.setAttribute('aria-label',`${repo.title} — ver código no GitHub (nova aba)`);
+  card.setAttribute('aria-label',`${repo.title} — conhecer projeto e visualizar telas`);
   card.style.setProperty('--stagger',`${index*85}ms`);
   const art = el('div',`project-art art-${index+1}`);
   const preview=projectPreviews[repo.name.toLowerCase()];
@@ -106,7 +109,7 @@ function makeFeaturedCard(repo,index){
     screenshot.loading='lazy';
     screenshot.width=1100;
     screenshot.height=680;
-    art.append(screenshot,el('span','art-lilabel','PRÉVIA ILUSTRATIVA'));
+    art.append(screenshot,el('span','art-lilabel','CAPTURA DE DEMONSTRAÇÃO'));
   }else{
     art.append(el('span','art-lilabel','VER PROJETO NO GITHUB'));
   }
@@ -122,7 +125,7 @@ function makeFeaturedCard(repo,index){
 function updateFeatured(){
   featuredGrid.replaceChildren();
   selectedFeatured.forEach((name,index)=>{
-    const repo=projectList.find(project=>project.name.toLowerCase()===name) || fallbackProjects.find(project=>project.name===name);
+    const repo=featuredCatalog[name];
     if(repo) featuredGrid.append(makeFeaturedCard(repo,index));
   });
   observeReveals(featuredGrid);
@@ -251,3 +254,51 @@ if('IntersectionObserver' in window && !reduceMotion.matches){
 }
 
 loadProjects();
+
+
+// Microinterações: barra de progresso, luz suave e profundidade nos cards.
+const motionAllowed=window.matchMedia('(prefers-reduced-motion: no-preference)');
+const progressFill=document.getElementById('scroll-progress-fill');
+let scrollQueued=false;
+function refreshScrollState(){
+  scrollQueued=false;
+  const distance=document.documentElement.scrollHeight-window.innerHeight;
+  const ratio=distance>0?Math.min(1,Math.max(0,window.scrollY/distance)):0;
+  if(progressFill)progressFill.style.transform=`scaleX(${ratio})`;
+  document.querySelector('.site-header')?.classList.toggle('scrolled',window.scrollY>32);
+}
+window.addEventListener('scroll',()=>{
+  if(scrollQueued)return;
+  scrollQueued=true;
+  requestAnimationFrame(refreshScrollState);
+},{passive:true});
+window.addEventListener('resize',refreshScrollState,{passive:true});
+refreshScrollState();
+
+function setInteractiveLight(node,event){
+  const bounds=node.getBoundingClientRect();
+  node.style.setProperty('--cursor-x', `${event.clientX-bounds.left}px`);
+  node.style.setProperty('--cursor-y', `${event.clientY-bounds.top}px`);
+  if(!motionAllowed.matches)return;
+  const horizontal=(event.clientX-bounds.left)/bounds.width-.5;
+  const vertical=(event.clientY-bounds.top)/bounds.height-.5;
+  node.style.setProperty('--tilt-x',`${(-vertical*2.6).toFixed(2)}deg`);
+  node.style.setProperty('--tilt-y',`${(horizontal*2.6).toFixed(2)}deg`);
+}
+function setupInteractiveCards(root=document){
+  root.querySelectorAll('.interactive-tilt:not([data-interactive])').forEach(card=>{
+    card.dataset.interactive='true';
+    card.addEventListener('pointermove',event=>{
+      if(event.pointerType==='touch')return;
+      setInteractiveLight(card,event);
+    },{passive:true});
+    card.addEventListener('pointerleave',()=>{
+      card.style.setProperty('--tilt-x','0deg');
+      card.style.setProperty('--tilt-y','0deg');
+    });
+  });
+}
+setupInteractiveCards();
+// updateFeatured monta os cards de forma assíncrona; observa os novos elementos.
+const cardContainerObserver=new MutationObserver(()=>setupInteractiveCards(featuredGrid));
+cardContainerObserver.observe(featuredGrid,{childList:true});

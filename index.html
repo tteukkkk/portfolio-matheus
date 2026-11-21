@@ -18,6 +18,7 @@
   <script defer src="./script.js"></script>
 </head>
 <body>
+  <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-fill"></span></div>
   <a class="skip-link" href="#principal">Ir para o conteúdo</a>
   <header class="site-header" id="topo">
     <div class="container nav-inner">
@@ -42,7 +43,7 @@
         <div class="availability"><span class="status-dot" aria-hidden="true"></span> Disponível para oportunidades</div>
         <p class="eyebrow hero-eyebrow">OLÁ, EU SOU O MATHEUS <span class="eyebrow-line"></span> DESENVOLVEDOR FULL STACK</p>
         <h1 id="hero-title">Construindo ideias em <span class="headline-accent">soluções digitais<span class="small-star" aria-hidden="true">✳</span></span></h1>
-        <p class="hero-description">Sou Matheus Macêdo Felicio, desenvolvedor Full Stack em formação. Crio aplicações web e projetos que conectam interfaces, lógica e dados para resolver problemas reais.</p>
+        <p class="hero-description">Sou Matheus Macêdo Felicio, desenvolvedor Full Stack em formação. Construo produtos com interfaces cuidadas, APIs e bancos de dados, da ideia à aplicação funcional.</p>
         <div class="hero-actions">
           <a class="button button-primary" href="#projetos">Explorar projetos <span aria-hidden="true">↗</span></a>
           <a class="button button-text" href="https://github.com/tteukkkk" target="_blank" rel="noopener noreferrer">Meu GitHub <span aria-hidden="true">↗</span></a>
@@ -68,9 +69,7 @@
       </div>
     </section>
 
-    <section class="ticker" aria-label="Áreas de interesse">
-      <div class="container ticker-inner"><span>Desenvolvimento web</span><span class="ticker-star">✳</span><span>Back-end</span><span class="ticker-star">✳</span><span>Interfaces</span><span class="ticker-star">✳</span><span>Bancos de dados</span><span class="ticker-star">✳</span><span>APIs REST</span></div>
-    </section>
+    <section class="ticker" aria-label="Áreas de interesse"><div class="ticker-mask"><div class="ticker-track"><span class="ticker-set"><span>Full Stack</span><span class="ticker-star">✳</span><span>SaaS &amp; APIs</span><span class="ticker-star">✳</span><span>Interfaces modernas</span><span class="ticker-star">✳</span><span>Segurança</span><span class="ticker-star">✳</span><span>Banco de dados</span><span class="ticker-star">✳</span></span><span class="ticker-set" aria-hidden="true"><span>Full Stack</span><span class="ticker-star">✳</span><span>SaaS &amp; APIs</span><span class="ticker-star">✳</span><span>Interfaces modernas</span><span class="ticker-star">✳</span><span>Segurança</span><span class="ticker-star">✳</span><span>Banco de dados</span><span class="ticker-star">✳</span></span></div></div></section>
 
     <section class="section about-section container" id="sobre" aria-labelledby="about-title">
       <div class="section-rail"><span class="section-number">01 / SOBRE MIM</span><div class="rail-line"></div></div>
@@ -81,7 +80,7 @@
         </div>
         <div class="about-right">
           <p>Sou estudante de Desenvolvimento de Sistemas no SENAI e desenvolvedor Full Stack em formação. Gosto de transformar necessidades do dia a dia em aplicações funcionais, unindo organização, experiência do usuário e boas práticas de programação.</p>
-          <p>Tenho desenvolvido projetos com Python, Django, JavaScript e bancos de dados relacionais, explorando desde modelagem de dados e regras de negócio até interfaces e integração com APIs.</p>
+          <p>Tenho desenvolvido sistemas com Python, Django, FastAPI, JavaScript e bancos de dados relacionais, explorando autenticação, regras de negócio, APIs REST, colaboração em tempo real e interfaces acessíveis.</p>
           <p>Busco uma oportunidade de estágio ou meu primeiro emprego em tecnologia, onde possa contribuir com projetos reais, colaborar com outros profissionais e continuar evoluindo tecnicamente.</p>
           <a class="inline-link" href="#contato">Vamos trabalhar juntos <span aria-hidden="true">↗</span></a>
         </div>
@@ -92,8 +91,9 @@
       <div class="container">
         <div class="section-rail"><span class="section-number">02 / PROJETOS</span><div class="rail-line"></div></div>
         <div class="projects-intro"><div><p class="section-kicker">UMA AMOSTRA DO QUE EU FAÇO</p><h2 id="projects-title">Projetos que saíram <span>do papel.</span></h2></div><p>Aplicações web, sistemas de gestão e bancos de dados. Cada projeto representa um desafio diferente e uma oportunidade de aprender.</p></div>
+        <div class="featured-heading-note"><span class="featured-led"></span> TRÊS PRODUTOS FULL STACK · PRÉVIAS DA APLICAÇÃO</div>
         <div class="featured-grid" id="featured-projects" aria-label="Projetos em destaque"></div>
-        <p class="preview-disclaimer">As imagens em destaque são prévias estáticas reconstruídas a partir dos templates e estilos dos repositórios, com dados de exemplo. Não são capturas de aplicações Django em execução.</p>
+        <p class="preview-disclaimer">As prévias mostram telas dos projetos geradas a partir dos respectivos frontends e dados fictícios em ambiente local. Não representam aplicações hospedadas publicamente; os repositórios individuais estão em preparação.</p>
         <div class="all-projects-heading">
           <div><p class="section-kicker">MEU REPOSITÓRIO DE IDEIAS</p><h3>Todos os projetos <span id="repo-total" class="project-count" aria-label="Quantidade de repositórios"></span></h3></div>
           <a class="inline-link" href="https://github.com/tteukkkk?tab=repositories" target="_blank" rel="noopener noreferrer">Ver no GitHub <span aria-hidden="true">↗</span></a>
@@ -111,10 +111,12 @@
       <div class="skills-grid" aria-label="Tecnologias que utilizo">
         <div class="skill-item"><span class="skill-icon">Py</span><span>Python</span></div>
         <div class="skill-item"><span class="skill-icon">Dj</span><span>Django</span></div>
+        <div class="skill-item"><span class="skill-icon">Fx</span><span>FastAPI</span></div>
         <div class="skill-item"><span class="skill-icon">&lt;/&gt;</span><span>HTML</span></div>
         <div class="skill-item"><span class="skill-icon">#</span><span>CSS</span></div>
         <div class="skill-item"><span class="skill-icon">JS</span><span>JavaScript</span></div>
         <div class="skill-item"><span class="skill-icon">DB</span><span>SQL / MySQL</span></div>
+        <div class="skill-item"><span class="skill-icon">Pg</span><span>PostgreSQL</span></div>
         <div class="skill-item"><span class="skill-icon">Gt</span><span>Git</span></div>
         <div class="skill-item"><span class="skill-icon">GH</span><span>GitHub</span></div>
         <div class="skill-item"><span class="skill-icon">API</span><span>APIs REST</span></div>
