@@ -24,7 +24,7 @@ const fallbackByName = new Map(fallbackProjects.map(project=>[project.name.toLow
 const selectedFeatured = ['agendaflow-saas','devflow','fintrack'];
 const featuredCatalog = {
   'agendaflow-saas':{name:'agendaflow-saas',title:'AgendaFlow SaaS',description:"Plataforma de agendamentos multiempresa com página pública de reservas, equipes, calendários, planos e fluxo de cobrança configurável.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/agendaflow-saas.html',detail_url:'./projetos/agendaflow-saas.html',published:false},
-  'devflow':{name:'devflow',title:'DevFlow',description:"Plataforma colaborativa de gestão de projetos com Kanban interativo, tarefas, convites, permissões e atualizações em tempo real.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html',detail_url:'./projetos/devflow.html',published:false},
+  'devflow':{name:'devflow',title:'DevFlow',description:"Gestão corporativa com painel executivo, quadro Kanban, relatórios de desempenho e acompanhamento de tarefas por responsável.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html',detail_url:'./projetos/devflow.html',published:false},
   'fintrack':{name:'fintrack',title:'FinTrack',description:"Gestão financeira pessoal com lançamentos, metas, orçamentos, recorrências, relatórios e importação inteligente de CSV.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/fintrack.html',detail_url:'./projetos/fintrack.html',published:false}
 };
 let projectList = fallbackProjects.slice();
@@ -97,9 +97,11 @@ const projectPreviews = {
     ]
   },
   'devflow':{
-    primary:{src:'./assets/devflow-preview.webp',alt:'Captura da interface DevFlow em ambiente de demonstração local.'},
+    primary:{src:'./assets/devflow-preview.webp?v=12',alt:'Visão geral do DevFlow com métricas, progresso das tarefas e lista de projetos.'},
     secondary:[
-      {src:'./assets/devflow-screen-2.webp',alt:'Dashboard do DevFlow com indicadores.'}
+      {src:'./assets/devflow-screen-2.webp?v=12',alt:'Quadro Kanban do DevFlow com etapas, cards de tarefas e responsáveis.'},
+      {src:'./assets/devflow-screen-3.webp?v=12',alt:'Relatórios do DevFlow com indicadores, distribuição por projeto e resumo de execução.'},
+      {src:'./assets/devflow-screen-4.webp?v=12',alt:'Tela Minhas tarefas do DevFlow com filtros, prioridades, prazos e responsáveis.'}
     ]
   },
   'fintrack':{
