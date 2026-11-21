@@ -895,9 +895,10 @@ html{scroll-padding-top:84px}
     column-gap:clamp(16px,2vw,36px);
     min-height:80px;
   }
-  .site-header .brand{grid-column:1;justify-self:start;margin:0}
+  .site-header .brand{grid-column:1;grid-row:1;justify-self:start;margin:0}
   .site-header .main-nav{
     grid-column:2;
+    grid-row:1;
     justify-self:center;
     display:flex;
     align-items:center;
@@ -931,6 +932,7 @@ html{scroll-padding-top:84px}
   .site-header .main-nav a:is(:hover,:focus-visible,.nav-active)::after{transform:scaleX(1)}
   .site-header .nav-actions{
     grid-column:3;
+    grid-row:1;
     justify-self:end;
     display:flex;
     align-items:center;
@@ -967,9 +969,10 @@ html{scroll-padding-top:84px}
     min-height:72px;
     column-gap:12px;
   }
-  .site-header .brand{grid-column:1;justify-self:start;margin:0}
+  .site-header .brand{grid-column:1;grid-row:1;justify-self:start;margin:0}
   .site-header .nav-actions{
     grid-column:2;
+    grid-row:1;
     display:flex;
     align-items:center;
     justify-content:flex-end;
