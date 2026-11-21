@@ -101,3 +101,18 @@ html[data-theme=dark] .case-fintrack{--accent:#ffe356;--accent-halo:#ffe45022;--
 .case-fintrack .case-shot-card{background:#fff;border:1px solid #111;color:#111}
 @media(max-width:830px){.case-agenda .agenda-hero,.case-fintrack .fin-hero{grid-template-columns:1fr;padding:50px 23px;gap:20px;min-height:0}.case-devflow .dev-hero{padding:48px 22px}.agenda-hero-mascot{width:85px;right:-5px;bottom:-28px}.case-fintrack .fin-display{box-shadow:5px 6px 0 #111}}
 @media(max-width:520px){.case-fintrack .fin-hero h1,.case-agenda .agenda-hero h1{font-size:clamp(46px,12vw,69px)}.case-fintrack .fin-shield{right:5px}.case-agenda .agenda-chip{position:relative;left:auto;bottom:auto;margin-top:12px}.agenda-hero-mascot{display:none}}
+/* AgendaFlow v18: screenshots fornecidos pelo autor; pares claro/escuro. */
+.case-agenda .agenda-mosaic .shot-wide{grid-column:span 12}
+.case-agenda .agenda-mosaic .shot-half{grid-column:span 6}
+.case-agenda .agenda-screen-wrap img,.case-agenda .agenda-mosaic img{
+  width:100%;
+  height:auto;
+  aspect-ratio:16 / 9;
+  object-fit:contain;
+  object-position:center center;
+  background:transparent;
+}
+@media(max-width:760px){
+  .case-agenda .agenda-mosaic .shot-wide,
+  .case-agenda .agenda-mosaic .shot-half{grid-column:span 12}
+}

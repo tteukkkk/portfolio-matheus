@@ -555,3 +555,16 @@ html[data-theme=dark] .github-card .skill-icon-logo{background:#ffffff;border-co
   border:0;
   margin:0;
 }
+
+/* AgendaFlow v18: imagem principal 16:9 sem letterboxing no card. */
+.featured-agendaflow .showcase-visual{
+  display:block;flex:0 0 auto;height:auto;min-height:0!important;overflow:hidden;
+}
+.featured-agendaflow .showcase-visual-top{
+  position:relative;inset:auto;width:100%;height:47px;padding:0 19px;box-sizing:border-box;
+}
+.featured-agendaflow .showcase-screen{
+  display:block;position:relative;inset:auto;top:auto;left:auto;width:100%;
+  height:auto;aspect-ratio:16 / 9;object-fit:cover;object-position:top center;
+  background:transparent;border:0;margin:0;border-radius:0 0 9px 9px;
+}

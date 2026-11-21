@@ -23,7 +23,7 @@ const fallbackProjects = [
 const fallbackByName = new Map(fallbackProjects.map(project=>[project.name.toLowerCase(),project]));
 const selectedFeatured = ['agendaflow-saas','devflow','fintrack'];
 const featuredCatalog = {
-  'agendaflow-saas':{name:'agendaflow-saas',title:'AgendaFlow SaaS',description:"Plataforma de agendamentos multiempresa com página pública de reservas, equipes, calendários, planos e fluxo de cobrança configurável.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/agendaflow-saas.html',detail_url:'./projetos/agendaflow-saas.html',published:false},
+  'agendaflow-saas':{name:'agendaflow-saas',title:'AgendaFlow SaaS',description:"Plataforma de agendamentos multiempresa com página pública de reservas, equipes, calendários, planos e fluxo de cobrança configurável.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/agendaflow-saas.html?v=18',detail_url:'./projetos/agendaflow-saas.html?v=18',published:false},
   'devflow':{name:'devflow',title:'DevFlow',description:"Gestão corporativa com painel executivo, quadro Kanban, relatórios de desempenho e acompanhamento de tarefas por responsável.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html?v=16',detail_url:'./projetos/devflow.html?v=16',published:false},
   'fintrack':{name:'fintrack',title:'FinTrack',description:"Gestão financeira pessoal com lançamentos, metas, orçamentos, recorrências, relatórios e importação inteligente de CSV.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/fintrack.html',detail_url:'./projetos/fintrack.html',published:false}
 };
@@ -91,9 +91,9 @@ function makeRepoCard(repo){
 
 const projectPreviews = {
   'agendaflow-saas':{
-    primary:{src:'./assets/agendaflow-saas-preview.webp',alt:'Captura da interface AgendaFlow SaaS em ambiente de demonstração local.'},
+    primary:{src:'./assets/agendaflow-dashboard-light.webp?v=18',alt:'Visão geral do AgendaFlow, com atendimentos, faturamento e clientes.'},
     secondary:[
-      {src:'./assets/agendaflow-saas-screen-3.webp',alt:'Reserva online do AgendaFlow.'}
+      {src:'./assets/agendaflow-calendar-light.webp?v=18',alt:'Calendário de agendamentos do AgendaFlow.'}
     ]
   },
   'devflow':{
@@ -128,7 +128,7 @@ function makeFeaturedCard(repo,index){
   visual.append(visualTop);
   if(preview){
     const screenshot=el('img','showcase-screen');
-    screenshot.src=preview.src;screenshot.alt=preview.alt;screenshot.loading='lazy';
+    screenshot.src=repo.name.toLowerCase()==='agendaflow-saas' && document.documentElement.dataset.theme==='dark'?'./assets/agendaflow-dashboard-dark.webp?v=18':preview.src;screenshot.alt=preview.alt;screenshot.loading='lazy';
     screenshot.width=1100;screenshot.height=680;
     visual.append(screenshot);
   }
@@ -265,6 +265,8 @@ themeButton.addEventListener('click',()=>{
   document.documentElement.dataset.theme=theme;
   try{localStorage.setItem('portfolio-theme',theme);}catch(error){console.info('Preferência de tema não armazenada.');}
   syncThemeButton();
+  const agendaImg=document.querySelector('.featured-agendaflow .showcase-screen');
+  if(agendaImg)agendaImg.src=theme==='dark'?'./assets/agendaflow-dashboard-dark.webp?v=18':'./assets/agendaflow-dashboard-light.webp?v=18';
 });
 
 // Revelações discretas com melhoria progressiva: sem JS ou com movimento reduzido, conteúdo visível.
