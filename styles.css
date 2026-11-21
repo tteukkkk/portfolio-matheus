@@ -885,3 +885,126 @@ html{scroll-padding-top:84px}
 @media(prefers-reduced-motion:reduce){
   .ticker-track{animation:none!important;will-change:auto}
 }
+
+/* HEADER REBALANCE V23 — marca / menu / acoes */
+@media(min-width:921px){
+  .site-header .nav-inner{
+    display:grid;
+    grid-template-columns:minmax(185px,1fr) auto minmax(185px,1fr);
+    align-items:center;
+    column-gap:clamp(16px,2vw,36px);
+    min-height:80px;
+  }
+  .site-header .brand{grid-column:1;justify-self:start;margin:0}
+  .site-header .main-nav{
+    grid-column:2;
+    justify-self:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:clamp(18px,2.2vw,43px);
+    min-width:max-content;
+    margin:0;
+  }
+  .site-header .main-nav a{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    min-height:44px;
+    font-size:13px;
+    white-space:nowrap;
+    transition:color .18s ease;
+  }
+  .site-header .main-nav a::after{
+    content:"";
+    position:absolute;
+    bottom:5px;
+    left:0;
+    right:0;
+    height:2px;
+    border-radius:2px;
+    background:var(--primary);
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .2s ease;
+  }
+  .site-header .main-nav a:is(:hover,:focus-visible,.nav-active)::after{transform:scaleX(1)}
+  .site-header .nav-actions{
+    grid-column:3;
+    justify-self:end;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:clamp(12px,1.2vw,22px);
+    min-width:max-content;
+  }
+  .site-header .nav-actions .theme-toggle{margin:0}
+  .site-header .nav-actions .nav-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    min-height:42px;
+    margin:0;
+    padding:10px 17px;
+    line-height:1.2;
+  }
+  .site-header .nav-actions .nav-cta span{margin:0}
+  .site-header .nav-actions .mobile-toggle{display:none}
+}
+@media(min-width:921px) and (max-width:1120px){
+  .site-header .nav-inner{grid-template-columns:minmax(135px,1fr) auto minmax(190px,1fr);column-gap:12px}
+  .site-header .main-nav{gap:clamp(13px,1.7vw,20px)}
+  .site-header .main-nav a{font-size:12px}
+  .site-header .nav-actions{gap:10px}
+  .site-header .nav-actions .nav-cta{gap:9px;padding-inline:13px;font-size:11px}
+}
+@media(max-width:920px){
+  .site-header .nav-inner{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+    min-height:72px;
+    column-gap:12px;
+  }
+  .site-header .brand{grid-column:1;justify-self:start;margin:0}
+  .site-header .nav-actions{
+    grid-column:2;
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    min-width:0;
+  }
+  .site-header .nav-actions .theme-toggle{
+    order:1;
+    display:grid;
+    margin:0;
+    width:40px;
+    height:40px;
+  }
+  .site-header .nav-actions .mobile-toggle{
+    order:2;
+    display:flex;
+    margin:0;
+    width:42px;
+    height:42px;
+  }
+  .site-header .nav-actions .nav-cta{display:none}
+  .site-header .main-nav{
+    top:100%;
+    left:0;
+    right:0;
+    width:100%;
+    max-height:min(72dvh,520px);
+    padding:9px var(--page-gutter) 19px;
+  }
+  .site-header .main-nav:not(.is-open){display:none}
+  .site-header .main-nav.is-open{display:flex}
+}
+@media(max-width:480px){
+  .site-header .nav-inner{column-gap:8px}
+  .site-header .nav-actions{gap:8px}
+  .site-header .nav-actions .theme-toggle,
+  .site-header .nav-actions .mobile-toggle{width:39px;height:39px}
+}
