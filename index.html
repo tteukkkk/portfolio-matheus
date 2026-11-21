@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#fbfaff" />
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")|| (matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}</script>
+  <meta name="description" content="Portfólio de Matheus Macêdo Felicio, desenvolvedor Full Stack em formação. Conheça projetos com Python, Django, JavaScript e MySQL." />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Matheus Macêdo Felicio — Desenvolvedor Full Stack" />
+  <meta property="og:description" content="Projetos, tecnologias e formas de contato. Desenvolvimento de software com foco em soluções reais." />
+  <title>Matheus Macêdo Felicio — Desenvolvedor Full Stack</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+  <script defer src="./script.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#principal">Ir para o conteúdo</a>
+  <header class="site-header" id="topo">
+    <div class="container nav-inner">
+      <a href="#topo" class="brand" aria-label="Matheus Macêdo, início">matheus<span class="brand-period">.</span><span class="brand-subtitle">dev</span></a>
+      <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu" aria-controls="nav-links" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="nav-links" class="main-nav" aria-label="Menu principal">
+        <a href="#sobre">Sobre mim</a>
+        <a href="#projetos">Projetos</a>
+        <a href="#habilidades">Tecnologias</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo escuro" title="Alternar modo claro e escuro"><svg class="theme-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><svg class="theme-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.2A8.5 8.5 0 0 1 10.8 3.4 8.6 8.6 0 1 0 20.6 13.2Z"/></svg></button>
+      <a class="nav-cta" href="mailto:macedomatheusmacedl581@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio">Vamos conversar <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="principal">
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <div class="availability"><span class="status-dot" aria-hidden="true"></span> Disponível para oportunidades</div>
+        <p class="eyebrow hero-eyebrow">OLÁ, EU SOU O MATHEUS <span class="eyebrow-line"></span> DESENVOLVEDOR FULL STACK</p>
+        <h1 id="hero-title">Construindo ideias em <span class="headline-accent">soluções digitais<span class="small-star" aria-hidden="true">✳</span></span></h1>
+        <p class="hero-description">Sou Matheus Macêdo Felicio, desenvolvedor Full Stack em formação. Crio aplicações web e projetos que conectam interfaces, lógica e dados para resolver problemas reais.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projetos">Explorar projetos <span aria-hidden="true">↗</span></a>
+          <a class="button button-text" href="https://github.com/tteukkkk" target="_blank" rel="noopener noreferrer">Meu GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="hero-divider"></div>
+        <div class="hero-metrics" aria-label="Meu perfil profissional">
+          <div><strong>Full Stack</strong><span>Área de atuação</span></div>
+          <span class="metric-separator" aria-hidden="true"></span>
+          <div><strong>Python + Django</strong><span>Foco em desenvolvimento</span></div>
+          <span class="metric-separator" aria-hidden="true"></span>
+          <div><strong>SENAI</strong><span>Formação técnica</span></div>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Fotografia de Matheus">
+        <span class="visual-outline visual-outline-top" aria-hidden="true"></span>
+        <div class="photo-frame">
+          <div class="photo-abstract" aria-hidden="true"><div class="photo-disc"></div><div class="photo-lettermark">MF<span>.</span></div><div class="photo-grid"></div></div>
+          <img src="./assets/foto-matheus.jpg" alt="Retrato de Matheus Macêdo Felicio" class="portrait-image loaded" width="640" height="640" fetchpriority="high" />
+          <div class="portrait-label"><span class="label-dot"></span> DESIGN + CÓDIGO</div>
+        </div>
+        <div class="floating-note"><span class="note-symbol" aria-hidden="true">{ }</span><span>Transformando<br />problemas em código.</span></div>
+        <span class="visual-caption">CRIATIVIDADE <span>×</span> TECNOLOGIA</span>
+      </div>
+    </section>
+
+    <section class="ticker" aria-label="Áreas de interesse">
+      <div class="container ticker-inner"><span>Desenvolvimento web</span><span class="ticker-star">✳</span><span>Back-end</span><span class="ticker-star">✳</span><span>Interfaces</span><span class="ticker-star">✳</span><span>Bancos de dados</span><span class="ticker-star">✳</span><span>APIs REST</span></div>
+    </section>
+
+    <section class="section about-section container" id="sobre" aria-labelledby="about-title">
+      <div class="section-rail"><span class="section-number">01 / SOBRE MIM</span><div class="rail-line"></div></div>
+      <div class="about-content">
+        <div>
+          <p class="section-kicker">QUEM ESTÁ POR TRÁS DO CÓDIGO</p>
+          <h2 id="about-title">Curiosidade para aprender. <span>Dedicação para construir.</span></h2>
+        </div>
+        <div class="about-right">
+          <p>Sou estudante de Desenvolvimento de Sistemas no SENAI e desenvolvedor Full Stack em formação. Gosto de transformar necessidades do dia a dia em aplicações funcionais, unindo organização, experiência do usuário e boas práticas de programação.</p>
+          <p>Tenho desenvolvido projetos com Python, Django, JavaScript e bancos de dados relacionais, explorando desde modelagem de dados e regras de negócio até interfaces e integração com APIs.</p>
+          <p>Busco uma oportunidade de estágio ou meu primeiro emprego em tecnologia, onde possa contribuir com projetos reais, colaborar com outros profissionais e continuar evoluindo tecnicamente.</p>
+          <a class="inline-link" href="#contato">Vamos trabalhar juntos <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects-section" id="projetos" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-rail"><span class="section-number">02 / PROJETOS</span><div class="rail-line"></div></div>
+        <div class="projects-intro"><div><p class="section-kicker">UMA AMOSTRA DO QUE EU FAÇO</p><h2 id="projects-title">Projetos que saíram <span>do papel.</span></h2></div><p>Aplicações web, sistemas de gestão e bancos de dados. Cada projeto representa um desafio diferente e uma oportunidade de aprender.</p></div>
+        <div class="featured-grid" id="featured-projects" aria-label="Projetos em destaque"></div>
+        <p class="preview-disclaimer">As imagens em destaque são prévias estáticas reconstruídas a partir dos templates e estilos dos repositórios, com dados de exemplo. Não são capturas de aplicações Django em execução.</p>
+        <div class="all-projects-heading">
+          <div><p class="section-kicker">MEU REPOSITÓRIO DE IDEIAS</p><h3>Todos os projetos <span id="repo-total" class="project-count" aria-label="Quantidade de repositórios"></span></h3></div>
+          <a class="inline-link" href="https://github.com/tteukkkk?tab=repositories" target="_blank" rel="noopener noreferrer">Ver no GitHub <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="project-controls"><div class="filter-group" role="group" aria-label="Filtrar projetos"><button class="filter-button active" type="button" data-filter="all" aria-pressed="true">Todos</button><button class="filter-button" type="button" data-filter="web" aria-pressed="false">Aplicações web</button><button class="filter-button" type="button" data-filter="database" aria-pressed="false">Banco de dados</button><button class="filter-button" type="button" data-filter="other" aria-pressed="false">Outros</button></div><label class="project-search"><span aria-hidden="true">⌕</span><span class="sr-only">Buscar projeto</span><input id="project-search" type="search" placeholder="Buscar projeto..." autocomplete="off" /></label></div>
+        <p class="repo-message" id="repo-message" role="status" aria-live="polite">Carregando repositórios públicos do GitHub...</p>
+        <div id="projects-grid" class="all-projects-grid"></div>
+        <p id="empty-results" class="empty-results" hidden>Nenhum projeto encontrado com esses filtros.</p>
+      </div>
+    </section>
+
+    <section class="section skills-section container" id="habilidades" aria-labelledby="skills-title">
+      <div class="section-rail"><span class="section-number">03 / TECNOLOGIAS</span><div class="rail-line"></div></div>
+      <div class="skills-layout"><div class="skills-copy"><p class="section-kicker">MEU KIT DE FERRAMENTAS</p><h2 id="skills-title">Tecnologia é meio. <span>Solução é o objetivo.</span></h2><p>Trabalho com ferramentas de front-end, back-end, bancos de dados e versionamento. Continuo estudando e aprimorando essas competências a cada projeto.</p></div>
+      <div class="skills-grid" aria-label="Tecnologias que utilizo">
+        <div class="skill-item"><span class="skill-icon">Py</span><span>Python</span></div>
+        <div class="skill-item"><span class="skill-icon">Dj</span><span>Django</span></div>
+        <div class="skill-item"><span class="skill-icon">&lt;/&gt;</span><span>HTML</span></div>
+        <div class="skill-item"><span class="skill-icon">#</span><span>CSS</span></div>
+        <div class="skill-item"><span class="skill-icon">JS</span><span>JavaScript</span></div>
+        <div class="skill-item"><span class="skill-icon">DB</span><span>SQL / MySQL</span></div>
+        <div class="skill-item"><span class="skill-icon">Gt</span><span>Git</span></div>
+        <div class="skill-item"><span class="skill-icon">GH</span><span>GitHub</span></div>
+        <div class="skill-item"><span class="skill-icon">API</span><span>APIs REST</span></div>
+      </div></div>
+    </section>
+
+    <section class="contact-wrap" id="contato" aria-labelledby="contact-title"><div class="container contact-panel"><div class="contact-left"><p class="contact-kicker"><span class="status-dot"></span> ABERTO A NOVAS OPORTUNIDADES</p><h2 id="contact-title">Tem uma ideia? <span>Vamos conversar.</span></h2><p>Estou em busca de estágio ou da minha primeira oportunidade em tecnologia. Se meu trabalho fizer sentido para sua equipe, entre em contato.</p><a class="button button-light" href="mailto:macedomatheusmacedl581@gmail.com?subject=Oportunidade%20em%20tecnologia">Enviar um e-mail <span aria-hidden="true">↗</span></a></div><div class="contact-decoration" aria-hidden="true"><span>↗</span></div><div class="contact-bottom"><a href="mailto:macedomatheusmacedl581@gmail.com">macedomatheusmacedl581@gmail.com <span aria-hidden="true">↗</span></a><div><a href="https://github.com/tteukkkk" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/tteukkkk" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-inner"><a href="#topo" class="brand">matheus<span class="brand-period">.</span><span class="brand-subtitle">dev</span></a><p>Desenvolvido com intenção, código e curiosidade.</p><a class="back-to-top" href="#topo">Voltar ao topo ↑</a></div></footer>
+</body>
+</html>
