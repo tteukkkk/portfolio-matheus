@@ -90,9 +90,25 @@ function makeRepoCard(repo){
 }
 
 const projectPreviews = {
-  'agendaflow-saas':{src:'./assets/agendaflow-saas-preview.webp',alt:'Captura da interface AgendaFlow SaaS em ambiente de demonstração local.'},
-  'devflow':{src:'./assets/devflow-preview.webp',alt:'Captura da interface DevFlow em ambiente de demonstração local.'},
-  'fintrack':{src:'./assets/fintrack-preview.webp',alt:'Captura da interface FinTrack em ambiente de demonstração local.'}
+  'agendaflow-saas':{
+    primary:{src:'./assets/agendaflow-saas-preview.webp',alt:'Captura da interface AgendaFlow SaaS em ambiente de demonstração local.'},
+    secondary:[
+      {src:'./assets/agendaflow-saas-screen-3-crop.webp',alt:'Reserva online do AgendaFlow.'}
+    ]
+  },
+  'devflow':{
+    primary:{src:'./assets/devflow-preview.webp',alt:'Captura da interface DevFlow em ambiente de demonstração local.'},
+    secondary:[
+      {src:'./assets/devflow-screen-2.webp',alt:'Dashboard do DevFlow com indicadores.'}
+    ]
+  },
+  'fintrack':{
+    primary:{src:'./assets/fintrack-preview-wide.webp',alt:'Captura da interface FinTrack em ambiente de demonstração local.'},
+    secondary:[
+      {src:'./assets/fintrack-screen-4.webp',alt:'Painel complementar do FinTrack.'},
+      {src:'./assets/fintrack-screen-2.webp',alt:'Relatórios do FinTrack.'}
+    ]
+  }
 };
 
 function makeFeaturedCard(repo,index){
@@ -101,7 +117,8 @@ function makeFeaturedCard(repo,index){
   card.href=repo.html_url;
   card.setAttribute('aria-label',`${repo.title} — conhecer a experiência e as telas do projeto`);
   card.style.setProperty('--stagger',`${index*110}ms`);
-  const preview=projectPreviews[repo.name.toLowerCase()];
+  const previewGroup=projectPreviews[repo.name.toLowerCase()]||{};
+  const preview=previewGroup.primary;
   const visual=el('div','showcase-visual');
   const visualTop=el('div','showcase-visual-top');
   visualTop.append(el('span','showcase-screen-label',index===0?'AGENDA / VISÃO GERAL':index===1?'WORKSPACE / KANBAN':'PAINEL / FINANÇAS'));
@@ -112,6 +129,17 @@ function makeFeaturedCard(repo,index){
     screenshot.src=preview.src;screenshot.alt=preview.alt;screenshot.loading='lazy';
     screenshot.width=1100;screenshot.height=680;
     visual.append(screenshot);
+  }
+  if(Array.isArray(previewGroup.secondary) && previewGroup.secondary.length){
+    const stack=el('div','showcase-thumb-stack');
+    previewGroup.secondary.slice(0,2).forEach(item=>{
+      const thumb=el('div','showcase-thumb');
+      const img=el('img','');
+      img.src=item.src;img.alt=item.alt;img.loading='lazy';img.width=520;img.height=320;
+      thumb.append(img);
+      stack.append(thumb);
+    });
+    visual.append(stack);
   }
   const overlay=el('div','showcase-visual-overlay');
   overlay.append(el('span','showcase-overlay-dot','✦'),el('span','',index===0?'Horários sem complicação':index===1?'Ship better. Together.':'Seu dinheiro, em perspectiva.'));
@@ -307,8 +335,26 @@ function setupInteractiveCards(root=document){
   });
 }
 setupInteractiveCards();
+function setupMagnetic(root=document){
+  root.querySelectorAll('[data-magnetic]:not([data-magnetic-ready]), .button:not([data-magnetic-ready]), .nav-cta:not([data-magnetic-ready]), .contact-provider:not([data-magnetic-ready]), .skill-item:not([data-magnetic-ready])').forEach(node=>{
+    node.dataset.magneticReady='true';
+    node.addEventListener('pointermove',event=>{
+      if(event.pointerType==='touch' || !motionAllowed.matches)return;
+      const bounds=node.getBoundingClientRect();
+      const x=(event.clientX-bounds.left)/bounds.width-.5;
+      const y=(event.clientY-bounds.top)/bounds.height-.5;
+      node.style.setProperty('--cursor-x',`${event.clientX-bounds.left}px`);
+      node.style.setProperty('--cursor-y',`${event.clientY-bounds.top}px`);
+      node.style.transform=`translate(${(x*5).toFixed(2)}px, ${(y*5).toFixed(2)}px)`;
+    },{passive:true});
+    node.addEventListener('pointerleave',()=>{
+      node.style.removeProperty('transform');
+    });
+  });
+}
+setupMagnetic();
 // updateFeatured monta os cards de forma assíncrona; observa os novos elementos.
-const cardContainerObserver=new MutationObserver(()=>setupInteractiveCards(featuredGrid));
+const cardContainerObserver=new MutationObserver(()=>{setupInteractiveCards(featuredGrid);setupMagnetic(featuredGrid);});
 cardContainerObserver.observe(featuredGrid,{childList:true});
 
 
@@ -320,6 +366,7 @@ if(contactDialog&&contactLaunch){
   contactLaunch.addEventListener('click',()=>{
     if(typeof contactDialog.showModal==='function')contactDialog.showModal();
     else contactDialog.setAttribute('open','');
+    contactDialog.querySelector('.contact-provider')?.focus();
   });
   const closeContact=()=>{
     if(typeof contactDialog.close==='function')contactDialog.close();
