@@ -415,3 +415,64 @@ html[data-theme=dark] .github-card .skill-icon-logo{background:#ffffff;border-co
 /* Nenhum elemento da vitrine deve exigir animação contínua. */
 .projects-section .featured-led{animation:none!important;box-shadow:none!important}
 @media(prefers-reduced-motion:reduce){.collaborate-link span,.collaborate-link::after{transition:none!important}}
+
+
+/* v7 — marcas monocromáticas para as opções de email. */
+.contact-provider .provider-icon,
+.provider-gmail .provider-icon,
+.provider-outlook .provider-icon,
+.provider-yahoo .provider-icon,
+.provider-default .provider-icon{
+  width:42px;height:42px;flex:0 0 42px;padding:8px;
+  background:#fff;color:#111;border:1px solid #e5e5ea;
+  border-radius:12px;box-shadow:0 4px 13px rgba(0,0,0,.075);
+}
+.contact-provider .provider-icon img{
+  width:100%;height:100%;display:block;object-fit:contain;
+  filter:brightness(0);
+}
+.contact-provider:hover .provider-icon{box-shadow:0 6px 15px rgba(0,0,0,.14)}
+
+/* v8 — hover econômico: sem movimento de cards, blur ou sombras animadas. */
+.contact-provider,
+.contact-provider:hover,
+.contact-provider:focus-visible {
+  transform: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.contact-provider {
+  transition: border-color .16s ease, background-color .16s ease !important;
+}
+.contact-provider:hover,
+.contact-provider:focus-visible {
+  border-color: var(--primary) !important;
+  background: var(--paper) !important;
+}
+.contact-provider::before { display: none !important; }
+.contact-provider .provider-icon,
+.contact-provider:hover .provider-icon {
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+}
+.contact-provider>span:last-child { transition: none !important; }
+.contact-dialog::backdrop {
+  background: rgba(10, 8, 17, .74);
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.skills-section .skill-item,
+.skills-section .skill-item:hover,
+.skills-section .skill-item:focus-visible {
+  transform: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+.skills-section .skill-item { transition: border-color .16s ease, background-color .16s ease !important; }
+.skills-section .skill-item:hover { background: var(--tint); }
+.skills-section .skill-logo-card::before { display:none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .contact-provider,.skills-section .skill-item { transition: none !important; }
+}
