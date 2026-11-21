@@ -302,3 +302,19 @@ setupInteractiveCards();
 // updateFeatured monta os cards de forma assíncrona; observa os novos elementos.
 const cardContainerObserver=new MutationObserver(()=>setupInteractiveCards(featuredGrid));
 cardContainerObserver.observe(featuredGrid,{childList:true});
+
+
+// Contato: cópia como alternativa robusta ao esquema mailto:.
+const contactEmail='macedomatheusmacedl581@gmail.com';
+async function copyPortfolioEmail(){
+  let copied=false;
+  try{await navigator.clipboard.writeText(contactEmail);copied=true}catch(err){
+    const temporary=document.createElement('textarea');temporary.value=contactEmail;
+    temporary.setAttribute('readonly','');temporary.style.position='fixed';temporary.style.opacity='0';
+    document.body.append(temporary);temporary.select();
+    try{copied=document.execCommand('copy')}catch(_){}temporary.remove();
+  }
+  const feedback=document.getElementById('contact-feedback');
+  if(feedback)feedback.textContent=copied?'E-mail copiado. Cole no serviço de mensagens de sua preferência.':'Não foi possível copiar automaticamente. Selecione o endereço exibido acima.';
+}
+['copy-contact-email','copy-contact-button'].forEach(id=>document.getElementById(id)?.addEventListener('click',copyPortfolioEmail));
