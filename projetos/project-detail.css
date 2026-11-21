@@ -232,20 +232,14 @@ html[data-theme=dark] .case-fintrack .fin-hero .case-button.secondary{border-col
   .case-foot{padding-block:25px}
 }
 
-/* FLUID DESKTOP CASE WIDTH V21 */
-@media (min-width: 1500px) {
-  /* Mantém as páginas de projetos alinhadas com a largura da home. */
-  .case-shell { max-width: clamp(1460px, 92vw, 1960px); }
-  .agenda-shell,.dev-shell,.fin-shell { padding-inline: clamp(52px, 3.25vw, 70px); }
-  .agenda-hero,.fin-hero {
-    gap: clamp(38px, 4vw, 78px);
-    min-height: clamp(690px, 42vw, 780px);
+/* PROJECT FULL-WIDTH V22 */
+.case-shell{
+  width:100%;
+  max-width:none;
+  margin-inline:0;
+}
+@media(min-width:921px){
+  .agenda-shell,.dev-shell,.fin-shell{
+    padding-inline:clamp(32px,3vw,82px);
   }
-  .agenda-hero h1 { font-size: clamp(90px, 6vw, 118px); }
-  .case-fintrack .fin-hero h1 { font-size: clamp(82px, 5.4vw, 110px); }
-  .case-devflow .dev-hero h1 { font-size: clamp(132px, 9vw, 178px); }
-  .agenda-lead,.fin-hero p,.dev-hero-lead { max-width: 600px; }
-  .agenda-section,.dev-section,.fin-section { padding-block: clamp(94px, 6vw, 125px); }
-  .agenda-benefits,.fin-features { gap: clamp(18px, 1.5vw, 30px); }
-  .case-gallery-grid { gap: clamp(20px, 1.5vw, 30px); }
 }
