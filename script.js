@@ -319,6 +319,49 @@ if('IntersectionObserver' in window && !reduceMotion.matches){
 loadProjects();
 
 
+// Infinite marquee: duplicate items to cover any viewport without a visible gap.
+const tickerTrack = document.querySelector('.ticker-track');
+const tickerViewport = document.querySelector('.ticker-mask');
+if(tickerTrack && tickerViewport){
+  const templateSet = tickerTrack.querySelector('.ticker-set');
+  if(templateSet){
+    let tickerFrame = 0;
+    function rebuildTicker(){
+      tickerFrame = 0;
+      // A faixa tem duas metades idênticas: a translação de 50% fecha o loop.
+      tickerTrack.style.animation = 'none';
+      tickerTrack.replaceChildren(templateSet);
+      const setWidth = templateSet.getBoundingClientRect().width;
+      if(!setWidth){
+        tickerTrack.style.removeProperty('animation');
+        return;
+      }
+      const copiesPerHalf = Math.max(1, Math.ceil(tickerViewport.clientWidth / setWidth) + 1);
+      for(let i=1; i<copiesPerHalf*2; i++){
+        const copy = templateSet.cloneNode(true);
+        copy.setAttribute('aria-hidden','true');
+        tickerTrack.append(copy);
+      }
+      const pixelsPerSecond = 45;
+      tickerTrack.style.setProperty('--ticker-duration',`${(copiesPerHalf*setWidth/pixelsPerSecond).toFixed(2)}s`);
+      tickerTrack.style.removeProperty('animation');
+    }
+    function scheduleTickerRebuild(){
+      if(tickerFrame)cancelAnimationFrame(tickerFrame);
+      tickerFrame=requestAnimationFrame(rebuildTicker);
+    }
+    if('ResizeObserver' in window){
+      new ResizeObserver(scheduleTickerRebuild).observe(tickerViewport);
+    }else{
+      window.addEventListener('resize',scheduleTickerRebuild,{passive:true});
+    }
+    if(document.fonts?.ready){
+      document.fonts.ready.then(scheduleTickerRebuild);
+    }
+    scheduleTickerRebuild();
+  }
+}
+
 // Indicador simples de rolagem; não recalcula posições de elementos no mouse.
 const progressFill=document.getElementById('scroll-progress-fill');
 let scrollQueued=false;
