@@ -244,11 +244,31 @@ mobileToggle.addEventListener('click',()=>{
   mobileToggle.setAttribute('aria-expanded',String(opened));
   mobileToggle.setAttribute('aria-label',opened?'Fechar menu':'Abrir menu');
 });
-mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+function closeMobileMenu(){
   mobileMenu.classList.remove('is-open');
   mobileToggle.setAttribute('aria-expanded','false');
   mobileToggle.setAttribute('aria-label','Abrir menu');
-}));
+}
+mobileMenu.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMobileMenu));
+// Fecha a navegação ao tocar fora, pressionar Escape ou voltar à tela grande.
+document.addEventListener('pointerdown',event=>{
+  if(mobileMenu.classList.contains('is-open') &&
+     !mobileMenu.contains(event.target) && !mobileToggle.contains(event.target)){
+    closeMobileMenu();
+  }
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape' && mobileMenu.classList.contains('is-open')){
+    closeMobileMenu();
+    mobileToggle.focus();
+  }
+});
+const desktopNav=window.matchMedia('(min-width: 921px)');
+if(typeof desktopNav.addEventListener==='function'){
+  desktopNav.addEventListener('change',event=>{
+    if(event.matches)closeMobileMenu();
+  });
+}
 
 
 
