@@ -14,8 +14,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css" />
-  <script defer src="./script.js"></script>
+  <link rel="stylesheet" href="./styles.css?v=4" />
+  <script defer src="./script.js?v=4"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-fill"></span></div>
@@ -91,7 +91,7 @@
       <div class="container">
         <div class="section-rail"><span class="section-number">02 / PROJETOS</span><div class="rail-line"></div></div>
         <div class="projects-intro"><div><p class="section-kicker">UMA AMOSTRA DO QUE EU FAÇO</p><h2 id="projects-title">Projetos que saíram <span>do papel.</span></h2></div><p>Aplicações web, sistemas de gestão e bancos de dados. Cada projeto representa um desafio diferente e uma oportunidade de aprender.</p></div>
-        <div class="featured-heading-note"><span class="featured-led"></span> TRÊS PRODUTOS FULL STACK · PRÉVIAS DA APLICAÇÃO</div>
+        <div class="featured-heading-note"><span class="featured-led"></span> TRÊS SOLUÇÕES · TRÊS UNIVERSOS VISUAIS</div>
         <div class="featured-grid" id="featured-projects" aria-label="Projetos em destaque"></div>
         <p class="preview-disclaimer">As prévias mostram telas dos projetos geradas a partir dos respectivos frontends e dados fictícios em ambiente local. Não representam aplicações hospedadas publicamente; os repositórios individuais estão em preparação.</p>
         <div class="all-projects-heading">
@@ -123,7 +123,33 @@
       </div></div>
     </section>
 
-    <section class="contact-wrap" id="contato" aria-labelledby="contact-title"><div class="container contact-panel"><div class="contact-left"><p class="contact-kicker"><span class="status-dot"></span> ABERTO A NOVAS OPORTUNIDADES</p><h2 id="contact-title">Tem uma ideia? <span>Vamos conversar.</span></h2><p>Estou em busca de estágio ou da minha primeira oportunidade em tecnologia. Se meu trabalho fizer sentido para sua equipe, entre em contato.</p><a class="button button-light" href="https://mail.google.com/mail/?view=cm&fs=1&to=macedomatheusmacedl581@gmail.com&su=Contato%20pelo%20portf%C3%B3lio%20%E2%80%94%20Matheus%20Mac%C3%AAdo" target="_blank" rel="noopener noreferrer">Enviar um e-mail <span aria-hidden="true">↗</span></a><div class="contact-options" aria-label="Opções de contato"><a class="contact-option" href="https://mail.google.com/mail/?view=cm&fs=1&to=macedomatheusmacedl581@gmail.com&su=Contato%20pelo%20portf%C3%B3lio%20%E2%80%94%20Matheus%20Mac%C3%AAdo" target="_blank" rel="noopener noreferrer">Abrir no Gmail ↗</a><a class="contact-option" href="https://outlook.live.com/mail/0/deeplink/compose?to=macedomatheusmacedl581@gmail.com&subject=Contato%20pelo%20portf%C3%B3lio%20%E2%80%94%20Matheus%20Mac%C3%AAdo" target="_blank" rel="noopener noreferrer">Abrir no Outlook ↗</a><button class="contact-option" type="button" id="copy-contact-button">Copiar e-mail ↗</button></div><p class="contact-tip" id="contact-feedback" role="status" aria-live="polite">Escolha seu serviço de e-mail ou copie o endereço, sem depender do aplicativo padrão.</p></div><div class="contact-decoration" aria-hidden="true"><span>↗</span></div><div class="contact-bottom"><div class="contact-email-line"><span id="contact-email">macedomatheusmacedl581@gmail.com</span><button type="button" id="copy-contact-email" class="contact-copy" aria-label="Copiar endereço de e-mail">Copiar e-mail ↗</button></div><div><a href="https://github.com/tteukkkk" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/tteukkkk" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div></div></section>
+    <section class="contact-wrap" id="contato" aria-labelledby="contact-title">
+      <div class="container contact-panel">
+        <div class="contact-left">
+          <p class="contact-kicker"><span class="status-dot" aria-hidden="true"></span> ABERTO A NOVAS OPORTUNIDADES</p>
+          <h2 id="contact-title">Tem uma ideia? <span>Vamos conversar.</span></h2>
+          <p>Estou em busca de estágio ou da minha primeira oportunidade em tecnologia. Se meu trabalho fizer sentido para sua equipe, entre em contato.</p>
+          <button class="button button-light contact-launch" id="contact-launch" type="button" aria-haspopup="dialog" aria-controls="contact-dialog">Enviar um e-mail <span aria-hidden="true">↗</span></button>
+        </div>
+        <div class="contact-decoration" aria-hidden="true"><span>↗</span></div>
+        <div class="contact-bottom"><span class="contact-address">macedomatheusmacedl581@gmail.com</span><div><a href="https://github.com/tteukkkk" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/tteukkkk" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div>
+      </div>
+    </section>
+    <dialog class="contact-dialog" id="contact-dialog" aria-labelledby="contact-dialog-title" aria-describedby="contact-dialog-description">
+      <div class="contact-dialog-inner">
+        <button class="contact-dialog-close" type="button" aria-label="Fechar opções de e-mail" id="contact-dialog-close">×</button>
+        <span class="contact-dialog-eyebrow">VAMOS CONVERSAR</span>
+        <h2 id="contact-dialog-title">Por onde prefere entrar em contato?</h2>
+        <p id="contact-dialog-description">Escolha seu serviço de e-mail para abrir uma nova mensagem já endereçada.</p>
+        <div class="contact-provider-grid">
+          <a class="contact-provider provider-gmail" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=macedomatheusmacedl581@gmail.com&amp;su=Contato%20pelo%20portf%C3%B3lio%20%E2%80%94%20Matheus%20Mac%C3%AAdo" target="_blank" rel="noopener noreferrer"><span class="provider-icon" aria-hidden="true">M</span><span><strong>Gmail</strong><small>Abrir no Google</small></span><span aria-hidden="true">↗</span></a>
+          <a class="contact-provider provider-outlook" href="https://outlook.live.com/mail/0/deeplink/compose?to=macedomatheusmacedl581@gmail.com&amp;subject=Contato%20pelo%20portf%C3%B3lio%20%E2%80%94%20Matheus%20Mac%C3%AAdo" target="_blank" rel="noopener noreferrer"><span class="provider-icon" aria-hidden="true">O</span><span><strong>Outlook</strong><small>Abrir na Microsoft</small></span><span aria-hidden="true">↗</span></a>
+          <a class="contact-provider provider-yahoo" href="https://compose.mail.yahoo.com/?to=macedomatheusmacedl581@gmail.com&amp;subject=Contato%20pelo%20portf%C3%B3lio" target="_blank" rel="noopener noreferrer"><span class="provider-icon" aria-hidden="true">Y</span><span><strong>Yahoo Mail</strong><small>Abrir no Yahoo</small></span><span aria-hidden="true">↗</span></a>
+          <a class="contact-provider provider-default" href="mailto:macedomatheusmacedl581@gmail.com?subject=Contato%20pelo%20portf%C3%B3lio" id="contact-default-mail"><span class="provider-icon" aria-hidden="true">✉</span><span><strong>Outro aplicativo</strong><small>Usar e-mail padrão</small></span><span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="contact-dialog-note">A mensagem será enviada pelo serviço que você escolher. Nenhum e-mail é enviado automaticamente.</p>
+      </div>
+    </dialog>
   </main>
 
   <footer class="site-footer"><div class="container footer-inner"><a href="#topo" class="brand">matheus<span class="brand-period">.</span><span class="brand-subtitle">dev</span></a><p>Desenvolvido com intenção, código e curiosidade.</p><a class="back-to-top" href="#topo">Voltar ao topo ↑</a></div></footer>

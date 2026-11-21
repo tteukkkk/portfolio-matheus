@@ -96,29 +96,37 @@ const projectPreviews = {
 };
 
 function makeFeaturedCard(repo,index){
-  const card = el('a','featured-card reveal interactive-tilt');
-  card.href = repo.html_url;
-  card.setAttribute('aria-label',`${repo.title} — conhecer projeto e visualizar telas`);
-  card.style.setProperty('--stagger',`${index*85}ms`);
-  const art = el('div',`project-art art-${index+1}`);
+  const variant=['agendaflow','devflow','fintrack'][index];
+  const card=el('a',`featured-card featured-${variant} reveal interactive-tilt`);
+  card.href=repo.html_url;
+  card.setAttribute('aria-label',`${repo.title} — conhecer a experiência e as telas do projeto`);
+  card.style.setProperty('--stagger',`${index*110}ms`);
   const preview=projectPreviews[repo.name.toLowerCase()];
+  const visual=el('div','showcase-visual');
+  const visualTop=el('div','showcase-visual-top');
+  visualTop.append(el('span','showcase-screen-label',index===0?'AGENDA / VISÃO GERAL':index===1?'WORKSPACE / KANBAN':'PAINEL / FINANÇAS'));
+  visualTop.append(el('span','showcase-visual-dots','•••'));
+  visual.append(visualTop);
   if(preview){
-    const screenshot=el('img','project-screenshot');
-    screenshot.src=preview.src;
-    screenshot.alt=preview.alt;
-    screenshot.loading='lazy';
-    screenshot.width=1100;
-    screenshot.height=680;
-    art.append(screenshot,el('span','art-lilabel','CAPTURA DE DEMONSTRAÇÃO'));
-  }else{
-    art.append(el('span','art-lilabel','VER PROJETO NO GITHUB'));
+    const screenshot=el('img','showcase-screen');
+    screenshot.src=preview.src;screenshot.alt=preview.alt;screenshot.loading='lazy';
+    screenshot.width=1100;screenshot.height=680;
+    visual.append(screenshot);
   }
-  const body = el('div','featured-body');
-  body.append(el('span','featured-number',`PROJETO EM DESTAQUE / 0${index+1}`));
-  const titleRow = el('div','featured-title-row');
-  titleRow.append(el('h3','featured-title',repo.title),el('span','featured-arrow','↗'));
-  body.append(titleRow,el('p','featured-description',repo.description),makeTags(repo.tags));
-  card.append(art,body);
+  const overlay=el('div','showcase-visual-overlay');
+  overlay.append(el('span','showcase-overlay-dot','✦'),el('span','',index===0?'Horários sem complicação':index===1?'Ship better. Together.':'Seu dinheiro, em perspectiva.'));
+  visual.append(overlay);
+  const body=el('div','showcase-copy');
+  body.append(el('span','showcase-index',`PROJETO 0${index+1} / ${['SERVIÇOS','PRODUTIVIDADE','FINANÇAS'][index]}`));
+  const brand=el('span','showcase-brand',index===0?'Agendamento inteligente':index===1?'Gerencie. Construa. Entregue.':'Finanças com clareza');
+  body.append(brand);
+  const nameRow=el('div','showcase-heading');
+  nameRow.append(el('h3','showcase-title',repo.title),el('span','showcase-link-arrow','↗'));
+  body.append(nameRow,el('p','showcase-description',repo.description));
+  body.append(makeTags(repo.tags));
+  const CTA=el('span','showcase-cta',index===0?'Conhecer plataforma  ↗':index===1?'Explorar workspace  ↗':'Ver o case  ↗');
+  body.append(CTA);
+  if(index===2){card.append(body,visual)}else{card.append(visual,body)}
   return card;
 }
 
@@ -304,17 +312,58 @@ const cardContainerObserver=new MutationObserver(()=>setupInteractiveCards(featu
 cardContainerObserver.observe(featuredGrid,{childList:true});
 
 
-// Contato: cópia como alternativa robusta ao esquema mailto:.
-const contactEmail='macedomatheusmacedl581@gmail.com';
-async function copyPortfolioEmail(){
-  let copied=false;
-  try{await navigator.clipboard.writeText(contactEmail);copied=true}catch(err){
-    const temporary=document.createElement('textarea');temporary.value=contactEmail;
-    temporary.setAttribute('readonly','');temporary.style.position='fixed';temporary.style.opacity='0';
-    document.body.append(temporary);temporary.select();
-    try{copied=document.execCommand('copy')}catch(_){}temporary.remove();
-  }
-  const feedback=document.getElementById('contact-feedback');
-  if(feedback)feedback.textContent=copied?'E-mail copiado. Cole no serviço de mensagens de sua preferência.':'Não foi possível copiar automaticamente. Selecione o endereço exibido acima.';
+// O seletor só aparece após interação: sem itens extras poluindo o rodapé.
+const contactDialog=document.getElementById('contact-dialog');
+const contactLaunch=document.getElementById('contact-launch');
+const contactClose=document.getElementById('contact-dialog-close');
+if(contactDialog&&contactLaunch){
+  contactLaunch.addEventListener('click',()=>{
+    if(typeof contactDialog.showModal==='function')contactDialog.showModal();
+    else contactDialog.setAttribute('open','');
+  });
+  const closeContact=()=>{
+    if(typeof contactDialog.close==='function')contactDialog.close();
+    else contactDialog.removeAttribute('open');
+  };
+  contactClose?.addEventListener('click',closeContact);
+  contactDialog.addEventListener('click',event=>{if(event.target===contactDialog)closeContact()});
+  contactDialog.querySelectorAll('.contact-provider').forEach(a=>a.addEventListener('click',closeContact));
 }
-['copy-contact-email','copy-contact-button'].forEach(id=>document.getElementById(id)?.addEventListener('click',copyPortfolioEmail));
+
+// Interações complementares: sensação de profundidade sem scroll-jacking.
+const motionMq=window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer=window.matchMedia('(hover: hover) and (pointer: fine)');
+if(finePointer.matches && !motionMq.matches){
+  const heroVisual=document.querySelector('.hero-visual');
+  if(heroVisual){
+    let raf=0;
+    heroVisual.addEventListener('pointermove',event=>{
+      cancelAnimationFrame(raf);
+      raf=requestAnimationFrame(()=>{
+        const box=heroVisual.getBoundingClientRect();
+        const x=(event.clientX-box.left)/box.width-.5;
+        const y=(event.clientY-box.top)/box.height-.5;
+        heroVisual.style.setProperty('--hero-x',`${(x*12).toFixed(2)}px`);
+        heroVisual.style.setProperty('--hero-y',`${(y*12).toFixed(2)}px`);
+      });
+    },{passive:true});
+    heroVisual.addEventListener('pointerleave',()=>{
+      heroVisual.style.setProperty('--hero-x','0px');
+      heroVisual.style.setProperty('--hero-y','0px');
+    });
+  }
+}
+const activeNavLinks=[...document.querySelectorAll('.main-nav a[href^="#"]')];
+if('IntersectionObserver' in window){
+  const sections=activeNavLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const navObserver=new IntersectionObserver(entries=>{
+    entries.filter(entry=>entry.isIntersecting).forEach(entry=>{
+      activeNavLinks.forEach(link=>{
+        const active=link.getAttribute('href')==='#'+entry.target.id;
+        link.classList.toggle('nav-active',active);
+        if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');
+      });
+    });
+  },{rootMargin:'-22% 0px -64% 0px',threshold:0});
+  sections.forEach(section=>navObserver.observe(section));
+}

@@ -27,3 +27,12 @@ Há link para pular a navegação, foco de teclado, cores compatíveis com ambos
 ## Autor
 
 Matheus Macêdo Felicio · [GitHub](https://github.com/tteukkkk) · [LinkedIn](https://www.linkedin.com/in/tteukkkk)
+
+
+## Redesign v4 — novembro de 2026
+
+- Vitrine dos três projetos com composições individuais (AgendaFlow editorial, DevFlow técnico, FinTrack financeiro).
+- Páginas de case totalmente independentes com galerias ampliáveis, modo claro/escuro, animações de entrada e interações suaves.
+- Contato simplificado: escolha do provedor (Gmail, Outlook, Yahoo Mail ou aplicativo local) somente após clicar no botão de e-mail.
+- Acessibilidade: HTML semântico, navegação por teclado, diálogos nativos e `prefers-reduced-motion`.
+- Site estático compatível com GitHub Pages. As imagens são capturas com dados fictícios: os sistemas backend não estão implantados neste domínio.

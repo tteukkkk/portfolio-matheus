@@ -219,3 +219,122 @@ html[data-theme='dark'] .site-header.scrolled{box-shadow:0 8px 30px #0006}
 html[data-theme=dark] .featured-card:nth-child(1) .project-art{background:#163e31;border-color:#426851}
 html[data-theme=dark] .featured-card:nth-child(2) .project-art{background:#0c1829;border-color:#316e8a}
 html[data-theme=dark] .featured-card:nth-child(3) .project-art{background:#173329;border-color:#4b7960}
+
+/* ============================ PORTFÓLIO 4.0 ============================
+   Cada projeto tem composição, linguagem visual e comportamento próprios.
+   Todas as animações são progressivas e respeitam reduced motion.
+*/
+.featured-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:stretch}
+.featured-card{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:25px;border:1px solid transparent;box-shadow:0 14px 35px rgba(25,20,45,.06);min-height:585px;text-decoration:none;will-change:transform;background:transparent;isolation:isolate}
+.featured-card .showcase-visual{position:relative;display:flex;flex:1;min-height:260px;isolation:isolate;overflow:hidden}
+.showcase-visual-top{display:flex;justify-content:space-between;align-items:center;position:absolute;left:25px;right:25px;top:23px;z-index:4;color:var(--feature-muted);font-size:10px;letter-spacing:.1em;font-weight:800}
+.showcase-visual-dots{letter-spacing:3px;font-size:15px}
+.showcase-screen{width:100%;height:100%;object-fit:cover;object-position:top center;position:absolute;inset:0;transition:transform .85s cubic-bezier(.2,.75,.2,1),filter .65s;backface-visibility:hidden}
+.showcase-visual-overlay{position:absolute;bottom:20px;left:27px;z-index:5;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:12px;border-radius:100px;padding:11px 16px;backdrop-filter:blur(12px);transition:transform .4s cubic-bezier(.18,.8,.18,1),background .3s}
+.showcase-overlay-dot{font-size:19px;line-height:.7}
+.featured-card:hover .showcase-visual-overlay{transform:translateY(-6px)}
+.featured-card:hover .showcase-screen{transform:translateY(-8px) scale(1.045)}
+.featured-card .showcase-copy{position:relative;padding:34px 34px 32px;display:flex;flex-direction:column;flex-shrink:0;z-index:3}
+.showcase-index{font-size:10px;letter-spacing:.16em;font-weight:850;opacity:.72}
+.showcase-brand{font-size:13px;font-weight:700;letter-spacing:.015em;margin-top:22px;margin-bottom:3px;opacity:.8}
+.showcase-heading{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 7px}
+.showcase-title{font-size:clamp(26px,2.9vw,37px);font-weight:850;line-height:1.2;letter-spacing:-1.8px;margin:0}
+.showcase-link-arrow{border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;width:42px;height:42px;flex-shrink:0;transition:transform .4s,background .3s;font-size:22px}
+.featured-card:hover .showcase-link-arrow{transform:rotate(45deg) scale(1.07)}
+.showcase-description{margin:8px 0 18px;max-width:540px;font-size:12px;line-height:1.72;opacity:.85}
+.showcase-cta{font-weight:800;margin-top:20px;font-size:12px;letter-spacing:.02em;display:inline-flex;gap:6px;align-items:center;transition:letter-spacing .25s,transform .25s}
+.featured-card:hover .showcase-cta{letter-spacing:.055em;transform:translateX(4px)}
+.showcase-copy .tag-row{gap:7px}
+.showcase-copy .tag{background:transparent;color:inherit;border-color:currentColor;opacity:.8;font-size:10px;letter-spacing:.02em}
+.featured-card::before{z-index:6!important;mix-blend-mode:soft-light}
+/* AgendaFlow — universo editorial acolhedor, calendário e verdes naturais. */
+.featured-agendaflow{grid-column:span 7;--feature-muted:#407960;background:#e9efe6;color:#183e33;border-color:#bfd5c6}
+.featured-agendaflow .showcase-visual{margin:24px 24px 0;border-radius:16px 16px 10px 10px;min-height:320px;background:#cadccf;box-shadow:0 14px 35px #2c594b1d;overflow:hidden}
+.featured-agendaflow .showcase-screen{top:47px;height:calc(100% - 47px);object-fit:cover;object-position:center top;border-radius:0 0 12px 12px}
+.featured-agendaflow .showcase-visual-top{top:0;left:0;right:0;height:47px;padding:0 19px;background:#f7f8f2;border-bottom:1px solid #d5e0d7;color:#446f5a}
+.featured-agendaflow .showcase-visual-overlay{background:#fffdf4ee;color:#254d3b;bottom:19px}
+.featured-agendaflow .showcase-overlay-dot{color:#4c9a76}
+.featured-agendaflow .showcase-copy{padding:29px 40px 36px;min-height:240px}
+.featured-agendaflow .showcase-title{font-family:Georgia,'Times New Roman',serif;font-weight:700;font-size:clamp(32px,3.7vw,46px);letter-spacing:-2px}
+.featured-agendaflow .showcase-brand{font-family:Georgia,serif;font-style:italic;font-size:15px;color:#3d785e}
+.featured-agendaflow .showcase-cta{color:#276d50}
+/* DevFlow — estúdio de desenvolvimento: formas cortadas, display neon e grid técnico. */
+.featured-devflow{grid-column:span 5;--feature-muted:#77d7f6;background:#101a2b;color:#eaf8ff;border-color:#2a405d;position:relative}
+.featured-devflow::after{content:'';position:absolute;inset:0;z-index:0;opacity:.34;pointer-events:none;background:linear-gradient(to right,#54c9ff12 1px,transparent 1px),linear-gradient(to bottom,#54c9ff12 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to bottom,#000,transparent 68%)}
+.featured-devflow .showcase-visual{background:#101b30;margin:25px 0 0 25px;min-height:335px;overflow:hidden;border:1px solid #36506d;border-right:0;border-radius:17px 0 0 17px;box-shadow:-14px 16px 48px #0005;transform:perspective(1200px) rotateY(-4deg);transform-origin:85% 50%;transition:transform .65s}
+.featured-devflow:hover .showcase-visual{transform:perspective(1200px) rotateY(0deg) translateX(-3px)}
+.featured-devflow .showcase-screen{top:42px;height:calc(100% - 42px);object-position:top left}
+.featured-devflow .showcase-visual-top{top:0;left:0;right:0;padding:0 20px;height:42px;background:#192940;border-bottom:1px solid #345273}
+.featured-devflow .showcase-visual-overlay{background:#143b58e9;color:#c8f2ff;border:1px solid #438bb7;bottom:18px;left:19px}
+.featured-devflow .showcase-overlay-dot{color:#68d2ff}
+.featured-devflow .showcase-copy{padding:26px 32px 37px;min-height:240px}
+.featured-devflow .showcase-brand{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#7adbff;text-transform:uppercase;font-size:11px;letter-spacing:.04em}
+.featured-devflow .showcase-title{font-weight:850;letter-spacing:-1.5px;color:#f1faff}
+.featured-devflow .showcase-link-arrow{color:#69d0ff;border-color:#44799b;border-radius:9px}
+.featured-devflow .showcase-cta{color:#67cfff}
+.featured-devflow .tag{border-radius:6px;color:#9bdbff;border-color:#4b7d9e}
+/* FinTrack — card horizontal premium, dashboard e grafismos financeiros. */
+.featured-fintrack{grid-column:span 12;min-height:425px;display:grid;grid-template-columns:43% 57%;align-items:stretch;--feature-muted:#e5c582;background:#153b2c;color:#edf7ee;border-color:#38624b;position:relative}
+.featured-fintrack::after{content:'';position:absolute;z-index:0;width:450px;height:450px;border:1px solid #b9c99d33;border-radius:50%;top:-220px;left:-160px;box-shadow:0 0 0 80px #a5ca9120,0 0 0 160px #a5ca9113;pointer-events:none}
+.featured-fintrack .showcase-copy{grid-column:1;grid-row:1;min-height:425px;justify-content:center;padding:48px 36px 48px 49px}
+.featured-fintrack .showcase-index{color:#e3c787;opacity:1}
+.featured-fintrack .showcase-brand{font-family:Georgia,serif;font-size:19px;font-style:italic;color:#efd49e;margin-top:24px}
+.featured-fintrack .showcase-title{font-family:Georgia,serif;font-size:clamp(40px,5vw,62px);letter-spacing:-2.7px;white-space:normal}
+.featured-fintrack .showcase-link-arrow{color:#eed291;border-color:#9aa97c}
+.featured-fintrack .showcase-description{max-width:430px;font-size:13px}
+.featured-fintrack .showcase-cta{color:#f0d48e;margin-top:28px}
+.featured-fintrack .showcase-visual{grid-column:2;grid-row:1;margin:42px 30px 42px 0;min-height:340px;border-radius:15px;background:#163728;border:1px solid #56785d;box-shadow:0 24px 40px #021c123b;overflow:hidden;transform:perspective(1000px) rotateY(-4deg);transform-origin:left center;transition:transform .65s}
+.featured-fintrack:hover .showcase-visual{transform:perspective(1000px) rotateY(0deg)}
+.featured-fintrack .showcase-screen{top:40px;height:calc(100% - 40px);object-position:top center}
+.featured-fintrack .showcase-visual-top{top:0;left:0;right:0;padding:0 19px;height:40px;background:#234c38;border-bottom:1px solid #467354;color:#ebcc86}
+.featured-fintrack .showcase-visual-overlay{left:auto;right:19px;background:#e9d39df0;color:#20402f}
+.featured-fintrack .tag{border-radius:5px;color:#e7d49b;border-color:#9eae82}
+/* Estado de hover/foco intencional + efeitos de entrada distintos por card. */
+.js-motion .featured-card.reveal{transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.js-motion .featured-agendaflow.reveal{transform:translateX(-22px) translateY(22px)}
+.js-motion .featured-devflow.reveal{transform:translateX(22px) translateY(22px)}
+.js-motion .featured-fintrack.reveal{transform:translateY(32px) scale(.975)}
+.js-motion .featured-card.reveal.is-visible{transform:none}
+.js-motion .featured-card.reveal.is-visible:hover{transform:perspective(1400px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-8px)}
+.featured-agendaflow:hover{box-shadow:0 25px 62px #366b492c}
+.featured-devflow:hover{box-shadow:0 26px 62px #2d74953b}
+.featured-fintrack:hover{box-shadow:0 24px 62px #17492d4a}
+.featured-card .showcase-visual::after{content:'';position:absolute;z-index:2;inset:auto 0 0;height:65px;background:linear-gradient(0deg,#102e2729,transparent);pointer-events:none}
+/* Contato: interface limpa até que o usuário solicite opções */
+.contact-launch{border:0;cursor:pointer;font-family:inherit;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:14px}
+.contact-launch:hover span{transform:translate(3px,-3px)}
+.contact-launch span{transition:transform .25s}
+.contact-address{overflow-wrap:anywhere;color:#f0e6fb;font-weight:700;font-size:12px}
+.contact-dialog{border:1px solid var(--line);border-radius:24px;box-shadow:0 35px 90px #11061e96;background:var(--paper);color:var(--ink);padding:0;max-width:min(530px,calc(100vw - 28px));width:100%;max-height:min(90vh,800px);overflow:auto;overscroll-behavior:contain}
+.contact-dialog::backdrop{background:#0b0712ba;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.contact-dialog[open]{animation:dialog-in .4s cubic-bezier(.14,.84,.23,1) both}
+@keyframes dialog-in{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.contact-dialog-inner{padding:38px;position:relative}
+.contact-dialog-close{position:absolute;right:20px;top:19px;border:1px solid var(--line);border-radius:50%;background:var(--subtle);color:var(--ink);width:36px;height:36px;cursor:pointer;font-size:26px;display:grid;place-items:center;transition:transform .25s,background .25s}
+.contact-dialog-close:hover{transform:rotate(90deg);background:var(--tint)}
+.contact-dialog-eyebrow{font-size:10px;font-weight:850;letter-spacing:.16em;color:var(--primary)}
+.contact-dialog h2{font:800 clamp(25px,4vw,33px)/1.18 Manrope,sans-serif;letter-spacing:-.04em;margin:11px 0}
+.contact-dialog p{font-size:13px;line-height:1.65;color:var(--muted);margin:12px 0 22px}
+.contact-provider-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.contact-provider{text-decoration:none;display:flex;align-items:center;gap:12px;border:1px solid var(--line);background:var(--subtle);border-radius:15px;padding:17px 13px;color:var(--ink);transition:transform .25s,box-shadow .25s,border-color .25s,background .25s}
+.contact-provider>span:nth-child(2){display:flex;flex:1;flex-direction:column;min-width:0;gap:2px}
+.contact-provider strong{font-size:12px;color:var(--ink)}
+.contact-provider small{font-size:10px;color:var(--muted)}
+.contact-provider>span:last-child{font-size:17px;color:var(--muted)}
+.contact-provider:hover{transform:translateY(-4px);border-color:var(--primary);box-shadow:0 13px 25px #5e36831c;background:var(--paper)}
+.provider-icon{width:35px;height:35px;border-radius:10px;display:grid;place-items:center;flex:none;font:bold 18px Manrope,sans-serif;background:#eee6f9;color:#6f40a7}
+.provider-gmail .provider-icon{color:#d64c4c;background:#ffe9e8}
+.provider-outlook .provider-icon{color:#0662bd;background:#e5f2ff}
+.provider-yahoo .provider-icon{color:#7613b6;background:#f3e9ff}
+.provider-default .provider-icon{color:#51647f;background:#e9edf2}
+.contact-dialog .contact-dialog-note{font-size:10px;color:var(--soft-text);margin:18px 0 0}
+.main-nav .nav-active{color:var(--primary);font-weight:850}
+.main-nav .nav-active::after{transform:scaleX(1)}
+/* Movimento ornamental suave sem bloquear interface */
+.hero-visual .floating-note{translate:var(--hero-x,0px) var(--hero-y,0px);transition:translate .45s cubic-bezier(.2,.8,.2,1)}
+.skill-item:hover{box-shadow:0 12px 30px #7e55b015;transform:translateY(-6px) rotate(-.8deg)}
+.repo-card:hover .repo-card-arrow{display:inline-block;transform:translate(3px,-3px);transition:transform .25s}
+@media(max-width:1050px){.featured-grid{gap:16px}.featured-agendaflow .showcase-copy{padding:25px 28px}.featured-devflow .showcase-copy{padding:25px}.featured-fintrack .showcase-copy{padding:35px}.featured-card{min-height:540px}.featured-fintrack{min-height:380px}.featured-fintrack .showcase-copy{min-height:380px}}
+@media(max-width:760px){.featured-grid{grid-template-columns:1fr;gap:24px}.featured-agendaflow,.featured-devflow,.featured-fintrack{grid-column:1;min-height:0}.featured-card .showcase-visual{flex:none;min-height:280px}.featured-fintrack{display:flex;flex-direction:column}.featured-fintrack .showcase-copy{order:2;min-height:0;padding:30px}.featured-fintrack .showcase-visual{order:1;min-height:260px;margin:25px 20px 0;transform:none;flex:none}.featured-fintrack:hover .showcase-visual{transform:none}.featured-agendaflow .showcase-visual{margin:20px 20px 0;min-height:260px}.featured-devflow .showcase-visual{margin:20px 0 0 20px;min-height:265px;transform:none}.featured-devflow:hover .showcase-visual{transform:none}.featured-devflow .showcase-copy{min-height:0}.featured-agendaflow .showcase-copy{min-height:0}.featured-card .showcase-title{font-size:clamp(28px,5.8vw,39px)}.featured-fintrack .showcase-title{font-size:45px}.js-motion .featured-agendaflow.reveal,.js-motion .featured-devflow.reveal{transform:translateY(25px)}.js-motion .featured-fintrack.reveal{transform:translateY(25px)}}
+@media(max-width:480px){.contact-dialog-inner{padding:32px 20px 23px}.contact-provider-grid{grid-template-columns:1fr}.featured-grid{gap:18px}.featured-card{border-radius:19px}.featured-card .showcase-visual{min-height:220px}.featured-agendaflow .showcase-visual{min-height:220px;margin:16px 16px 0}.featured-devflow .showcase-visual{min-height:235px;margin:16px 0 0 16px}.featured-fintrack .showcase-visual{min-height:215px;margin:16px 16px 0}.featured-card .showcase-copy{padding:25px}.featured-card .showcase-title{font-size:30px;letter-spacing:-1.3px}.featured-fintrack .showcase-title{font-size:42px}.showcase-visual-overlay{font-size:10px;padding:9px 12px}.featured-card .showcase-index{font-size:9px}.showcase-brand{margin-top:15px}.contact-bottom>div{gap:18px}}
+@media(prefers-reduced-motion:reduce){.contact-dialog[open]{animation:none}.featured-card .showcase-screen,.featured-card .showcase-visual,.featured-card .showcase-link-arrow,.featured-card .showcase-visual-overlay,.hero-visual .floating-note{transition:none!important}.js-motion .featured-card.reveal{opacity:1!important;transform:none!important}.js-motion .featured-card.reveal.is-visible:hover{transform:none!important}}
