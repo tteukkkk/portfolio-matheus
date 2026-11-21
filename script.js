@@ -97,7 +97,7 @@ const projectPreviews = {
     ]
   },
   'devflow':{
-    primary:{src:'./assets/devflow-preview.webp?v=12',alt:'Visão geral do DevFlow com métricas, progresso das tarefas e lista de projetos.'},
+    primary:{src:'./assets/devflow-overview-light.webp?v=16',alt:'Visão geral do DevFlow com métricas, progresso das tarefas e lista de projetos.'},
     secondary:[
       {src:'./assets/devflow-screen-2.webp?v=12',alt:'Quadro Kanban do DevFlow com etapas, cards de tarefas e responsáveis.'},
       {src:'./assets/devflow-screen-3.webp?v=12',alt:'Relatórios do DevFlow com indicadores, distribuição por projeto e resumo de execução.'},
@@ -129,7 +129,7 @@ function makeFeaturedCard(repo,index){
   if(preview){
     const screenshot=el('img','showcase-screen');
     const key=repo.name.toLowerCase();const dark=document.documentElement.dataset.theme==='dark';
-    screenshot.src=key==='fintrack' && dark?'./assets/fintrack-dashboard-dark.webp?v=19':key==='agendaflow-saas' && dark?'./assets/agendaflow-dashboard-dark.webp?v=18':preview.src;
+    screenshot.src=key==='devflow' && dark?'./assets/devflow-preview.webp?v=12':key==='fintrack' && dark?'./assets/fintrack-dashboard-dark.webp?v=19':key==='agendaflow-saas' && dark?'./assets/agendaflow-dashboard-dark.webp?v=18':preview.src;
     screenshot.alt=preview.alt;screenshot.loading='lazy';
     screenshot.width=1100;screenshot.height=680;
     visual.append(screenshot);
@@ -289,6 +289,8 @@ themeButton.addEventListener('click',()=>{
   syncThemeButton();
   const agendaImg=document.querySelector('.featured-agendaflow .showcase-screen');
   if(agendaImg)agendaImg.src=theme==='dark'?'./assets/agendaflow-dashboard-dark.webp?v=18':'./assets/agendaflow-dashboard-light.webp?v=18';
+  const devflowImg=document.querySelector('.featured-devflow .showcase-screen');
+  if(devflowImg)devflowImg.src=theme==='dark'?'./assets/devflow-preview.webp?v=12':'./assets/devflow-overview-light.webp?v=16';
   const finImg=document.querySelector('.featured-fintrack .showcase-screen');
   if(finImg)finImg.src=theme==='dark'?'./assets/fintrack-dashboard-dark.webp?v=19':'./assets/fintrack-dashboard-light.webp?v=19';
 });
