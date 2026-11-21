@@ -24,7 +24,7 @@ const fallbackByName = new Map(fallbackProjects.map(project=>[project.name.toLow
 const selectedFeatured = ['agendaflow-saas','devflow','fintrack'];
 const featuredCatalog = {
   'agendaflow-saas':{name:'agendaflow-saas',title:'AgendaFlow SaaS',description:"Plataforma de agendamentos multiempresa com página pública de reservas, equipes, calendários, planos e fluxo de cobrança configurável.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/agendaflow-saas.html',detail_url:'./projetos/agendaflow-saas.html',published:false},
-  'devflow':{name:'devflow',title:'DevFlow',description:"Gestão corporativa com painel executivo, quadro Kanban, relatórios de desempenho e acompanhamento de tarefas por responsável.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html',detail_url:'./projetos/devflow.html',published:false},
+  'devflow':{name:'devflow',title:'DevFlow',description:"Gestão corporativa com painel executivo, quadro Kanban, relatórios de desempenho e acompanhamento de tarefas por responsável.",tags:["FastAPI", "WebSockets", "Python"],category:'web',html_url:'./projetos/devflow.html?v=13',detail_url:'./projetos/devflow.html?v=13',published:false},
   'fintrack':{name:'fintrack',title:'FinTrack',description:"Gestão financeira pessoal com lançamentos, metas, orçamentos, recorrências, relatórios e importação inteligente de CSV.",tags:["FastAPI", "Python", "SQLAlchemy"],category:'web',html_url:'./projetos/fintrack.html',detail_url:'./projetos/fintrack.html',published:false}
 };
 let projectList = fallbackProjects.slice();
