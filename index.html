@@ -14,13 +14,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./styles.css?v=5" />
-  <script defer src="./script.js?v=5"></script>
+  <link rel="stylesheet" href="./styles.css?v=6" />
+  <script defer src="./script.js?v=6"></script>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><span id="scroll-progress-fill"></span></div>
   <a class="skip-link" href="#principal">Ir para o conteúdo</a>
-  <header class="site-header" id="topo">
+  <div id="topo" class="top-sentinel" aria-hidden="true"></div>
+  <header class="site-header">
     <div class="container nav-inner">
       <a href="#topo" class="brand" aria-label="Matheus Macêdo, início">matheus<span class="brand-period">.</span><span class="brand-subtitle">dev</span></a>
       <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menu" aria-controls="nav-links" aria-expanded="false">
@@ -82,7 +83,7 @@
           <p>Sou estudante de Desenvolvimento de Sistemas no SENAI e desenvolvedor Full Stack em formação. Gosto de transformar necessidades do dia a dia em aplicações funcionais, unindo organização, experiência do usuário e boas práticas de programação.</p>
           <p>Tenho desenvolvido sistemas com Python, Django, FastAPI, JavaScript e bancos de dados relacionais, explorando autenticação, regras de negócio, APIs REST, colaboração em tempo real e interfaces acessíveis.</p>
           <p>Busco uma oportunidade de estágio ou meu primeiro emprego em tecnologia, onde possa contribuir com projetos reais, colaborar com outros profissionais e continuar evoluindo tecnicamente.</p>
-          <a class="inline-link" href="#contato">Vamos trabalhar juntos <span aria-hidden="true">↗</span></a>
+          <a class="inline-link collaborate-link" href="#contato">Vamos trabalhar juntos <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>

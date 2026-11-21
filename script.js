@@ -77,7 +77,7 @@ function makeTags(tags){
 }
 
 function makeRepoCard(repo){
-  const card = el('a','repo-card reveal');
+  const card = el('a','repo-card');
   card.href = repo.html_url;
   card.target = '_blank';
   card.rel = 'noopener noreferrer';
@@ -113,7 +113,7 @@ const projectPreviews = {
 
 function makeFeaturedCard(repo,index){
   const variant=['agendaflow','devflow','fintrack'][index];
-  const card=el('a',`featured-card featured-${variant} reveal interactive-tilt`);
+  const card=el('a',`featured-card featured-${variant}`);
   card.href=repo.html_url;
   card.setAttribute('aria-label',`${repo.title} — conhecer a experiência e as telas do projeto`);
   card.style.setProperty('--stagger',`${index*110}ms`);
@@ -208,7 +208,6 @@ async function loadProjects(){
     const fetched=await fetchAllRepositories();
     projectList=fetched.map(normalizeProject);
     setCount(projectList.length);
-    updateFeatured();
     updateAllProjects();
     repoMessage.textContent=`${projectList.length} repositório${projectList.length===1?' público carregado':'s públicos carregados'} diretamente do GitHub. A listagem inclui projetos adicionados recentemente.`;
   }catch(error){
@@ -292,8 +291,7 @@ if('IntersectionObserver' in window && !reduceMotion.matches){
 loadProjects();
 
 
-// Microinterações: barra de progresso, luz suave e profundidade nos cards.
-const motionAllowed=window.matchMedia('(prefers-reduced-motion: no-preference)');
+// Indicador simples de rolagem; não recalcula posições de elementos no mouse.
 const progressFill=document.getElementById('scroll-progress-fill');
 let scrollQueued=false;
 function refreshScrollState(){
@@ -311,52 +309,16 @@ window.addEventListener('scroll',()=>{
 window.addEventListener('resize',refreshScrollState,{passive:true});
 refreshScrollState();
 
-function setInteractiveLight(node,event){
-  const bounds=node.getBoundingClientRect();
-  node.style.setProperty('--cursor-x', `${event.clientX-bounds.left}px`);
-  node.style.setProperty('--cursor-y', `${event.clientY-bounds.top}px`);
-  if(!motionAllowed.matches)return;
-  const horizontal=(event.clientX-bounds.left)/bounds.width-.5;
-  const vertical=(event.clientY-bounds.top)/bounds.height-.5;
-  node.style.setProperty('--tilt-x',`${(-vertical*2.6).toFixed(2)}deg`);
-  node.style.setProperty('--tilt-y',`${(horizontal*2.6).toFixed(2)}deg`);
-}
-function setupInteractiveCards(root=document){
-  root.querySelectorAll('.interactive-tilt:not([data-interactive])').forEach(card=>{
-    card.dataset.interactive='true';
-    card.addEventListener('pointermove',event=>{
-      if(event.pointerType==='touch')return;
-      setInteractiveLight(card,event);
-    },{passive:true});
-    card.addEventListener('pointerleave',()=>{
-      card.style.setProperty('--tilt-x','0deg');
-      card.style.setProperty('--tilt-y','0deg');
-    });
+// O topo real está antes do header sticky. Este fallback cobre navegadores
+// onde a navegação para a âncora já visível não provoca rolagem.
+const reduceTopMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+document.querySelectorAll('a[href="#topo"]').forEach(link=>{
+  link.addEventListener('click',event=>{
+    event.preventDefault();
+    window.scrollTo({top:0,left:0,behavior:reduceTopMotion.matches?'instant':'smooth'});
+    if(location.hash!=='#topo')history.replaceState(null,'','#topo');
   });
-}
-setupInteractiveCards();
-function setupMagnetic(root=document){
-  root.querySelectorAll('[data-magnetic]:not([data-magnetic-ready]), .button:not([data-magnetic-ready]), .nav-cta:not([data-magnetic-ready]), .contact-provider:not([data-magnetic-ready]), .skill-item:not([data-magnetic-ready])').forEach(node=>{
-    node.dataset.magneticReady='true';
-    node.addEventListener('pointermove',event=>{
-      if(event.pointerType==='touch' || !motionAllowed.matches)return;
-      const bounds=node.getBoundingClientRect();
-      const x=(event.clientX-bounds.left)/bounds.width-.5;
-      const y=(event.clientY-bounds.top)/bounds.height-.5;
-      node.style.setProperty('--cursor-x',`${event.clientX-bounds.left}px`);
-      node.style.setProperty('--cursor-y',`${event.clientY-bounds.top}px`);
-      node.style.transform=`translate(${(x*5).toFixed(2)}px, ${(y*5).toFixed(2)}px)`;
-    },{passive:true});
-    node.addEventListener('pointerleave',()=>{
-      node.style.removeProperty('transform');
-    });
-  });
-}
-setupMagnetic();
-// updateFeatured monta os cards de forma assíncrona; observa os novos elementos.
-const cardContainerObserver=new MutationObserver(()=>{setupInteractiveCards(featuredGrid);setupMagnetic(featuredGrid);});
-cardContainerObserver.observe(featuredGrid,{childList:true});
-
+});
 
 // O seletor só aparece após interação: sem itens extras poluindo o rodapé.
 const contactDialog=document.getElementById('contact-dialog');
@@ -377,29 +339,6 @@ if(contactDialog&&contactLaunch){
   contactDialog.querySelectorAll('.contact-provider').forEach(a=>a.addEventListener('click',closeContact));
 }
 
-// Interações complementares: sensação de profundidade sem scroll-jacking.
-const motionMq=window.matchMedia('(prefers-reduced-motion: reduce)');
-const finePointer=window.matchMedia('(hover: hover) and (pointer: fine)');
-if(finePointer.matches && !motionMq.matches){
-  const heroVisual=document.querySelector('.hero-visual');
-  if(heroVisual){
-    let raf=0;
-    heroVisual.addEventListener('pointermove',event=>{
-      cancelAnimationFrame(raf);
-      raf=requestAnimationFrame(()=>{
-        const box=heroVisual.getBoundingClientRect();
-        const x=(event.clientX-box.left)/box.width-.5;
-        const y=(event.clientY-box.top)/box.height-.5;
-        heroVisual.style.setProperty('--hero-x',`${(x*12).toFixed(2)}px`);
-        heroVisual.style.setProperty('--hero-y',`${(y*12).toFixed(2)}px`);
-      });
-    },{passive:true});
-    heroVisual.addEventListener('pointerleave',()=>{
-      heroVisual.style.setProperty('--hero-x','0px');
-      heroVisual.style.setProperty('--hero-y','0px');
-    });
-  }
-}
 const activeNavLinks=[...document.querySelectorAll('.main-nav a[href^="#"]')];
 if('IntersectionObserver' in window){
   const sections=activeNavLinks.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);

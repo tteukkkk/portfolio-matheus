@@ -389,3 +389,29 @@ html[data-theme=dark] .github-card .skill-icon-logo{background:#ffffff;border-co
 @media(max-width:1024px){.skills-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.showcase-thumb{display:none}.featured-fintrack .showcase-copy{padding:30px}.featured-fintrack .showcase-visual{margin:18px 18px 0}}
 @media(max-width:520px){.skills-grid{grid-template-columns:1fr 1fr}.skill-logo-card{min-height:120px;padding:15px}.skill-logo-card .skill-icon-logo{width:44px;height:44px}}
+
+
+/* v6 — performance: cards não fazem mais tracking de mouse / rotação 3D. */
+.top-sentinel{height:0;display:block;position:relative;scroll-margin-top:0}
+.collaborate-link{position:relative;gap:17px;border-bottom:0;padding-bottom:11px;text-decoration:none;transition:color .25s ease}
+.collaborate-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;border-radius:2px;background:currentColor;transform:scaleX(.26);transform-origin:left center;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.collaborate-link:hover::after,.collaborate-link:focus-visible::after{transform:scaleX(1)}
+.collaborate-link span{display:inline-block;transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.collaborate-link:hover span,.collaborate-link:focus-visible span{transform:translate(4px,-4px)}
+.projects-section .featured-card,.projects-section .repo-card{will-change:auto!important;transform:none!important;filter:none!important;transition:border-color .18s ease,box-shadow .18s ease!important}
+.projects-section .featured-card:hover,.projects-section .featured-card:focus-visible,.projects-section .repo-card:hover,.projects-section .repo-card:focus-visible{transform:none!important;box-shadow:0 6px 20px rgba(20,18,34,.08)!important}
+.projects-section .featured-card:hover{outline:1px solid rgba(130,92,180,.18);outline-offset:0}
+.projects-section .featured-card::before,.projects-section .featured-card::after{display:none!important}
+.projects-section .featured-card .showcase-visual,.projects-section .featured-card:hover .showcase-visual{transform:none!important;transition:none!important;box-shadow:none!important}
+.projects-section .featured-card .showcase-screen,.projects-section .featured-card:hover .showcase-screen{transform:none!important;transition:none!important;filter:none!important;backface-visibility:visible}
+.projects-section .featured-card .showcase-thumb,.projects-section .featured-card:hover .showcase-thumb{transform:none!important;transition:none!important;backdrop-filter:none!important;box-shadow:0 5px 12px #0002!important}
+.projects-section .featured-card .showcase-visual-overlay,.projects-section .featured-card:hover .showcase-visual-overlay{transform:none!important;transition:none!important;backdrop-filter:none!important}
+.projects-section .featured-card .showcase-link-arrow,.projects-section .featured-card:hover .showcase-link-arrow{transform:none!important;transition:background-color .2s ease!important}
+.projects-section .featured-card .showcase-cta,.projects-section .featured-card:hover .showcase-cta{transform:none!important;letter-spacing:normal!important;transition:color .2s ease!important}
+.projects-section .featured-devflow::after{display:none!important}
+.projects-section .featured-agendaflow,.projects-section .featured-devflow,.projects-section .featured-fintrack{box-shadow:none}
+.projects-section .repo-card-arrow{transition:color .2s ease}
+.projects-section .repo-card:hover .repo-card-arrow{transform:none}
+/* Nenhum elemento da vitrine deve exigir animação contínua. */
+.projects-section .featured-led{animation:none!important;box-shadow:none!important}
+@media(prefers-reduced-motion:reduce){.collaborate-link span,.collaborate-link::after{transition:none!important}}
