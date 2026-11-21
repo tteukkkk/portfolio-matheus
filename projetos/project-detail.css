@@ -243,3 +243,41 @@ html[data-theme=dark] .case-fintrack .fin-hero .case-button.secondary{border-col
     padding-inline:clamp(32px,3vw,82px);
   }
 }
+
+/* FINTRACK GOLD ACCENTS V25 — substitui o teal no tema claro */
+html[data-theme="light"] .case-fintrack{
+  --accent:#9b7000;
+  --accent-halo:rgba(255,228,83,.28);
+  --tint:#fff9e6;
+  --button-text:#111;
+}
+/* O amarelo vivo funciona em linhas e fundos; o dourado escuro mantém os números legíveis. */
+html[data-theme="light"] .case-fintrack .fin-feature{
+  border-top-color:#f0ce35;
+}
+html[data-theme="light"] .case-fintrack .fin-feature span{
+  color:#a57800;
+}
+html[data-theme="light"] .case-fintrack .fin-divider{
+  color:#a57800;
+  border-block-color:#e9d68b;
+}
+html[data-theme="light"] .case-fintrack .fin-divider::after{
+  background:#e9d68b;
+}
+html[data-theme="light"] .case-fintrack .fin-nav-brand span,
+html[data-theme="light"] .case-fintrack .fin-feature span,
+html[data-theme="light"] .case-fintrack .fin-section .case-kicker{
+  color:#a57800;
+}
+html[data-theme="light"] .case-fintrack .case-eyebrow::before,
+html[data-theme="light"] .case-fintrack .case-scroll-progress{
+  background:#ffe453;
+}
+html[data-theme="light"] .case-fintrack .case-button.primary{
+  background:#ffe453;
+  color:#171717;
+}
+html[data-theme="light"] .case-fintrack .case-button.secondary{
+  border-color:#cba83f;
+}
